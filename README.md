@@ -8,20 +8,20 @@ Backend- Firebase DataStore
 Stock website which allows users to search stocks with different criterias, create/save/delete a list of stocks, and include other feature such as viewing/deleting their search history and logging in with 3rd party providers (Google and Github).
 
 ## Angular Features:
-Angular Material Controls (Buttons, Dialogs, Snackbar, Tables, Selectors, Inputs, Tabs)
-Decoupled modules
-Lazy Loading
-Forms (Reactive) w/ validation
-Reusable components
-Presentation/Logic Components
-IEX Cloud API
-Abstract Services and Components
-Http Interceptor
+Angular Material Controls (Buttons, Dialogs, Snackbar, Tables, Selectors, Inputs, Tabs)<br>
+Decoupled modules<br>
+Lazy Loading<br>
+Forms (Reactive) w/ validation<br>
+Reusable components<br>
+Presentation/Logic Components<br>
+IEX Cloud API<br>
+Abstract Services and Components<br>
+Http Interceptor<br>
 Route Guard
 
 ## Firebase Features:
-Authentication
-3rd party authentication: Google && Github
+Authentication<br>
+3rd party authentication: Google && Github<br>
 NoSQL Database 
 
 ## Packages
