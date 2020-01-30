@@ -1,0 +1,8 @@
+@mixin section() {
+    section  {
+        min-width: 100vw;
+        position: relative;
+        left: 0;
+        bottom: 0;
+    }
+}

@@ -1,0 +1,24 @@
+<section fxLayout="column" fxLayoutAlign="center space-between">
+    <form [formGroup]="formGroup" (ngSubmit)="submitForm()" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
+        <div>
+            <mat-form-field>
+                <mat-label>Search Filter</mat-label>
+                <br/>
+                <mat-select [formControl]="searchOptCtrl" required>
+                    <mat-optgroup *ngFor="let group of searchGroup" [label]="group.name" [disabled]="group.disabled">
+                        <mat-option *ngFor="let select of group.option" [value]="select.value">
+                            {{select.viewValue}}
+                        </mat-option>
+                    </mat-optgroup>
+                </mat-select>
+                <mat-error *ngIf="formGroup.controls.searchOptCtrl.hasError('required')">
+                    Search criteria is <strong>REQUIRED</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="button-wrapper">
+            <button class="mat-elevation-z7" mat-flat-button color="primary"><span
+                    class="button-span">Submit</span></button>
+        </div>
+    </form>
+</section>

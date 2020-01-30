@@ -1,0 +1,52 @@
+<div class="presentation">
+    <div class="social-container" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <a (click)="loginGoogle()" class="social mat-elevation-z5">
+            <i class="fa fa-google"></i>
+        </a>
+        <a (click)="loginGithub()" class="social mat-elevation-z5">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+    <form [formGroup]="formGroup">
+        <h1 id="signinTitle">Sign In</h1>
+        <div><span>with your <span class="gold">social media</span></span></div>
+
+        <span>or use your <span class="gold">email</span></span>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input class="mat-elevation-z5" matInput placeholder="Email" formControlName="loginEmailCtrl" required
+                [errorStateMatcher]="matcher">
+            <mat-error *ngIf="formGroup.controls.loginEmailCtrl.hasError('maxlength')">
+                Maximum of <strong>{{formGroup.controls.loginEmailCtrl.errors.maxlength.requiredLength}}</strong>
+                characters
+            </mat-error>
+            <mat-error
+                *ngIf="formGroup.controls.loginEmailCtrl.hasError('email') && !formGroup.controls.loginEmailCtrl.hasError('required')">
+                Please enter a <strong>valid</strong> email address
+            </mat-error>
+            <mat-error *ngIf="formGroup.controls.loginEmailCtrl.hasError('required')">
+                Email is <strong>REQUIRED</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input class="mat-elevation-z5" matInput placeholder="Password" formControlName="loginPassCtrl" required
+                [errorStateMatcher]="matcher">
+            <mat-error *ngIf="formGroup.get('loginPassCtrl').errors &&
+            formGroup.get('loginPassCtrl').dirty && formGroup.controls.loginPassCtrl.hasError('required')">
+                Password is <strong>REQUIRED</strong>
+            </mat-error>
+            <mat-error *ngIf="formGroup.get('loginPassCtrl').errors &&
+            formGroup.get('loginPassCtrl').dirty && !formGroup.controls.loginPassCtrl.hasError('required')">
+                Password is <strong>REQUIRED</strong>
+            </mat-error>
+            <mat-error *ngIf="formGroup.get('loginPassCtrl').errors &&
+            formGroup.get('loginPassCtrl').dirty && formGroup.controls.loginPassCtrl.hasError('maxlength')">
+                Maximum of <strong>{{formGroup.controls.loginPassCtrl.errors.maxlength.requiredLength}}</strong>
+                characters
+            </mat-error>
+        </mat-form-field>
+        <button class="button-home" type="submit" (click)="login()">Sign in</button>
+
+    </form>
+</div>

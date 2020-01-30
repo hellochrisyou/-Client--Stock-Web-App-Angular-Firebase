@@ -1,0 +1,10 @@
+<section fxLayout="column" fxLayoutAlign="center center">
+    <button *ngIf="histories" (click)="clearHistory()" class="margin-center non-home-button mat-elevation-z7" mat-flat-button color="primary">
+        <span 
+            class="button-span">Clear</span>
+        </button> 
+    <base-table *ngIf="histories" style='max-width: 20vw' [columnIds]="searchCol" [columnObjects]="searchCol"
+        [isSearch]="isSearch" [dataArray]="histories">
+    </base-table>
+    <shared-footer *ngIf="!histories"></shared-footer>
+</section> 

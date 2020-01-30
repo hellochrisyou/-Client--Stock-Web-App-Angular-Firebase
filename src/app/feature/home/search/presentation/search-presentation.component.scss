@@ -1,0 +1,15 @@
+@import '_control';
+@import '_form';
+
+@include form();
+@include select();
+
+form {
+    margin-top:20px;
+}
+
+span.button-span
+ {
+     color: white; 
+    cursor: pointer;
+ }

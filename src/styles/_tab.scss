@@ -1,0 +1,11 @@
+@mixin tab(){
+    div {
+        mat-tab-group {
+            mat-tab-header {
+                div.mat-tab-label-content {
+                    color: black !important;
+                }
+            }
+        }
+    }
+}

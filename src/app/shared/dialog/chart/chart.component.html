@@ -1,0 +1,7 @@
+<div *ngIf="chartData" class="chart-wrapper">
+    <h1 class="mat-typography mat-display-1 text-center profile-typogrpahy">Last 5 days</h1>
+    <p class="text-center">(hover to view values)</p>
+    <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [options]="lineChartOptions"
+        [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
+    </canvas>
+</div>

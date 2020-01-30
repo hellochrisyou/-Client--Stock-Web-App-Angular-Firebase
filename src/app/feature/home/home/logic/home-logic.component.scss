@@ -1,0 +1,86 @@
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
+@import '_container';
+@import '_control'; 
+@import '_button';
+@import '_font';
+@import '_presentation_form';
+
+@include container();
+@include font();
+@include presentationForm();
+@include input();
+@include button();
+
+form h1, span   {
+    color: black;
+}
+    
+p {
+    color:black;
+    font-weight: normal;
+}
+
+
+  .navi-icon {
+      color:royalblue;
+  }
+  
+  main {
+      position: relative;      
+      left: 0;
+  }
+
+  section {
+      position:relative;
+      left: 0;
+  }
+
+div img:hover {
+    transform: scale3d(1.2, 1.2, 1); 
+	-webkit-transform: scale3d(1.2, 1.2, 1); 
+	transition: all 0.35s cubic-bezier(0.000, 1.270, 0.460, 1.650); 
+	-webkit-transition: all 0.35s cubic-bezier(0.000, 1.270, 0.460, 1.650);
+}
+
+form h1, span, i, a {
+    color: black; 
+    margin-bottom: 8px;
+} 
+
+i, a{
+    margin: 5px;
+    cursor: pointer;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
+    margin-top:0.65rem;   
+    margin-left:3px;
+}
+
+a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(black, 0.35);
+      transition: all 0.35s cubic-bezier(0.000, 1.270, 0.460, 1.650); 
+      -webkit-transition: all 0.35s cubic-bezier(0.000, 1.270, 0.460, 1.650); 
+}
+
+mat-toolbar.HomeComponent {
+    top:0;
+    width:100%;
+}
+
+#signinTitle {
+    margin-top:-5vw;
+}
+
+main {
+    position: relative;
+    top: 0;
+}
+.container {
+    top: 5vh;
+}
+
+p {
+    text-align: justify;
+}

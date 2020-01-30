@@ -1,0 +1,15 @@
+table {
+    border-radius: 1rem !important;
+  }
+  
+  tr.mat-header-row th {
+    color: black;
+    font-weight: 250;
+    text-align: center;
+  }
+  
+  :host ::ng-deep tr.mat-header-row th.mat-header-cell {
+    display: flex;
+    justify-content: flex-end;
+  }
+

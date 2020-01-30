@@ -1,0 +1,38 @@
+<main>
+    <div *ngIf="auth.user | async; then authenticated else guest">
+    </div>
+    <ng-template #guest>
+        <div class="container" id="container" [ngClass]="condition?'right-panel-active':''">
+            <div class="form-container sign-up-container">
+                <home-login></home-login>
+            </div>
+            <!-- Login -->
+            <div class="form-container sign-in-container">
+                <home-signup></home-signup>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>Welcome Back!</h1>
+                        <p>Sign up with an account if you don't have a social media or email account registered.</p>
+                        <button class="ghost" id="signIn" (click)="btnClick()">Sign up</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>Hi</h1>
+                        <p>Register a new account with an existing email</p>
+                        <button class="ghost" id="signUp" (click)="btnClick()">Sign in</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #authenticated>
+        <!-- Put in photo -->
+        <div fxLayout="column" fxLayoutAlign="center center">
+        <h4>Available on Mobile</h4><br/>
+            <div>
+                <img class="margin-center mat-elevation-12" src="../../../../../assets/img/mobile-phone.png">
+            </div>            
+        </div>
+    </ng-template>
+</main>

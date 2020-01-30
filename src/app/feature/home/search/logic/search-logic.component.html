@@ -1,0 +1,7 @@
+<section fxLayout="column" fxLayoutAlign="center center">
+    <search-bar (emitValue)="onSubmit($event)"></search-bar>
+    <base-table *ngIf="stockArr" [dataArray]="stockArr" [columnIds]="stockCol" [columnObjects]="stockCol"
+        [isSearch]="isSearch">
+    </base-table>
+    <shared-footer *ngIf="!stockArr" ></shared-footer>
+</section>
