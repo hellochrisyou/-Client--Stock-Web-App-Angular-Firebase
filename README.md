@@ -2,6 +2,7 @@ http://stock.chrisyou.com
 # Stock Web App - Angular/Firebase
 
 Frontend- Angular 2+ version 9 
+<br>
 Backend- Firebase DataStore
 
 Stock website which allows users to search stocks with different criterias, create/save/delete a list of stocks, and include other feature such as viewing/deleting their search history and logging in with 3rd party providers (Google and Github).
