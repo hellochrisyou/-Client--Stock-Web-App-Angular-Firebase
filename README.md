@@ -25,7 +25,8 @@ Authentication<br>
 NoSQL Database 
 
 ## Packages
-Angular Packages: Angular Material, Prettier, TsLint, Rxjs, Auth0
+#### Angular Packages: 
+     Angular Material, Prettier, TsLint, Rxjs, Auth0
 
 ## Cloud Infrastructure Diagram
 <img  src="https://chrisyou-backup-website.s3.amazonaws.com/assets/AWS+Network+Diagram+(1).png" width="100%"/>
