@@ -63,10 +63,13 @@ tr.mat-header-row th {
 }
 
  .mat-cell:first-child {
-  padding-right:1vw;
-  padding-left:0.5vw;
-  text-align: center;
+  padding-left:4rem;
+  text-align: left;
+}
 
+.mat-header-cell:first-child {
+  padding-left:5.5rem;
+  text-align: left;
 }
 
 div.mat-sort-header-container {
@@ -118,4 +121,8 @@ tr.expanded-row:not(.expanded-row):active {
 
 .add-tooltip-green {
   background: #4bb543;
+}
+
+td {
+  text-transform: capitalize;
 }

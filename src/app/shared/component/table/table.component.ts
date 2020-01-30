@@ -1,19 +1,18 @@
-import { Component, Input, OnInit, ViewChild, AfterViewInit, AfterViewChecked, AfterContentChecked, DoCheck, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import * as GLOBAL from '@shared/const/url.const';
-import { ChartComponent } from '@shared/dialog/chart/chart.component';
-import { SearchHistory, Stock } from '@shared/interface/models';
-import { HttpService } from 'app/core/service/http/http.service';
-import { NanService } from 'app/core/service/mapper/nan.service';
-import { ErrorComponent } from '@shared/dialog/error/error.component';
-import { expandRowTransition } from 'app/core/animation/animation';
 import { COLS_DISPLAY } from '@shared/const/column.const';
-import { BehaviorSubject } from 'rxjs';
+import { ChartComponent } from '@shared/dialog/chart/chart.component';
+import { ErrorComponent } from '@shared/dialog/error/error.component';
+import { SearchHistory, Stock } from '@shared/interface/models';
+import { expandRowTransition } from 'app/core/animation/animation';
+import { EmitService } from 'app/core/service/emit/emit.service';
 import { HistoryService } from 'app/core/service/firebase/history.service';
 import { StockService } from 'app/core/service/firebase/stock.service';
+import { HttpService } from 'app/core/service/http/http.service';
+import { NanService } from 'app/core/service/mapper/nan.service';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -31,12 +30,12 @@ export class TableComponent implements OnInit {
 
   private _isStock: boolean;
   private _isSearch: string;
-  public dataSource: MatTableDataSource<Stock>;
+  public dataSource: MatTableDataSource<Stock | SearchHistory>;
   public index: number;
   private _columnIds: string[] = [];
   private _columnObjects: any[];
   private _type: string;
-  private _dataArray: Stock[] | SearchHistory[];
+  private _dataArray: any[];
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -58,10 +57,10 @@ export class TableComponent implements OnInit {
   }
 
   @Input()
-  public get dataArray(): Stock[] | SearchHistory[] {
+  public get dataArray():any[]{
     return this._dataArray;
   }
-  public set dataArray(value: Stock[]| SearchHistory[]) {
+  public set dataArray(value: any[]) {
     this._dataArray = value;
   }
 
@@ -96,27 +95,32 @@ export class TableComponent implements OnInit {
     private nanService: NanService,
     public dialog: MatDialog,
     private historyService: HistoryService,
-    private snackBar: MatSnackBar,
-    private stockService: StockService
-  ) { }
+    private stockService: StockService,
+    private emitService: EmitService,
+  ) {
+   }
 
-  ngOnInit() {
-    console.log('table here', this.dataArray);
-    this.dataSource = new MatTableDataSource<Stock | SearchHistory>(this.dataArray);
+  public ngOnInit() {    
+    this.emitService.refreshOutput.subscribe(x => {
+      this.refresh();
+    });
+  }
+
+  public refresh(): void { 
+    this.dataSource = new MatTableDataSource<any>(this.dataArray);
     this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    console.log('datasource mat table', this.dataSource);
+    this.dataSource.paginator = this.paginator;    
+    console.log('emitted', this.dataArray);     
   }
 
   public select(value: number): void {
     if (this._isSearch === 'true') {
       console.log('select value: ', value);
       console.log('datararay number', this.dataArray[value])
-
-      this.stockService.addStock(this.dataArray[value]);      
+      this.stockService.addStock(this.dataArray[value]);
     } else {
-      this.stockService.deleteStock(this.dataArray[value])
-    }
+      this.stockService.deleteStock(this.dataArray[value]);
+    }  
   }
 
   // SORTING
@@ -154,12 +158,6 @@ export class TableComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
-    });
-  }
-
-  public openSnackBar(message: string, title: string): void {
-    this.snackBar.open(message, title, {
-      duration: 2000,
     });
   }
 

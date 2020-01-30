@@ -7,7 +7,7 @@ import { ProfileComponent } from './profile.component';
 const routes: Routes = [
   {
     path: '',
-    component: ProfileComponent,  canActivate: [AuthGuard] , data: {state: 'my-list' } 
+    component: ProfileComponent,  canActivate: [AuthGuard] , pathMatch: 'full', data: {state: 'profile' } 
   }
 ];
 

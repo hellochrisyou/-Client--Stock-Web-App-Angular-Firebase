@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Stock } from '@shared/interface/models';
-import { StockDto } from '@shared/interface/dto.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +7,9 @@ import { StockDto } from '@shared/interface/dto.interface';
 export class StockMapperService {
 
   stockArr: Stock[];
-  curStock: Stock = {};
+  curStock: Stock = {
+    options: 'options'
+  };
 
 
   constructor() { }
@@ -16,7 +17,9 @@ export class StockMapperService {
   public mapStockArray(data: any): Stock[] {
     this.stockArr = [];
     data.forEach(x => {
-      this.curStock = {};
+      this.curStock = {
+        options: 'options'
+    };
       this.curStock.symbol = x.symbol;
       this.curStock.exchange = x.primaryExchange;
       this.curStock.name = x.companyName;

@@ -1,10 +1,24 @@
-<div fxLayout="row" fxLayoutAlign="center center" >
-
-    <div *ngIf="auth.user | async as user">
-        <mat-card class="card">
-                <h1 class="mat-typography mat-display-1 text-center profile-typography">{{ user.displayName }}</h1>
-                <h5 class="mat-typography mat-display-5 text-center profile-typography">{{ user.email}}</h5>
-            <img *ngIf="user.photoURL" mat-card-image [src]="user.photoURL">
-        </mat-card>
+<section>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <div *ngIf="user | async as user">
+            <div class="container">
+                <div class="card">
+                    <img [src]="user.photoURL" style="width:100%">
+                </div>
+                <div class="card-wrapper">
+                    <div class="card">
+                        <div class="card-image">
+                            <img [src]="user.photoURL">
+                        </div>                        
+                        <div class="details">
+                            <h2>{{ user.displayName }}
+                                <br>
+                                <div class="subTitle">{{ user.email }}</div>
+                            </h2>                                           
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     </div>
+    </section>

@@ -15,7 +15,6 @@ export const SEARCHGROUP: SearchGroup[] = [
             { value: 'gainers', viewValue: 'Gainers' },
             { value: 'losers', viewValue: 'Losers' },
             { value: 'iexvolume', viewValue: 'Volume' },
-            { value: 'iexpercetage', viewValue: 'Percentage' }
         ]
     }
 ];

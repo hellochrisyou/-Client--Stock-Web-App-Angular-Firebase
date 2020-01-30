@@ -10,6 +10,7 @@ export class ChartService {
   stockArr: Stock[];
   // tslint:disable-next-line: variable-name
   private _curStock: Stock = {
+    options: 'options'
   };
 
   dataArray: ChartKeyValue[];
@@ -37,7 +38,9 @@ export class ChartService {
   public mapChartArrayFiveDays(data: any, symbol: string): void {
     this.stockArr = [];
     data.forEach(x => {
-      this.curStock = {};
+      this.curStock = {
+        options: 'options'
+      };
       this.curStock.symbol = symbol;
       this.curStock.low = x.low;
       this.curStock.high = x.high;
@@ -52,7 +55,9 @@ export class ChartService {
       if (i%5 !== 0) {
         continue;
       } else {
-        this.curStock = {};
+        this.curStock = {
+          options: 'options'
+        };
         this.curStock.symbol = symbol;
         this.curStock.low = data[i-1].low;
         this.curStock.high = data[i-1].high;
@@ -68,7 +73,9 @@ export class ChartService {
       if (i % 21 !== 0) {
         continue;
       } else {
-        this.curStock = {};
+        this.curStock = {
+          options: 'options'
+        };
         this.curStock.symbol = symbol;
         this.curStock.low = data[i-1].low;
         this.curStock.high = data[i-1].high;
@@ -85,7 +92,9 @@ export class ChartService {
       if (i % 250 !== 0) {
         continue;
       } else {
-        this.curStock = {};
+        this.curStock = {
+          options: 'options'
+        };
         this.curStock.symbol = symbol;
         this.curStock.low = data[i-1].low;
         this.curStock.high = data[i-1].high;

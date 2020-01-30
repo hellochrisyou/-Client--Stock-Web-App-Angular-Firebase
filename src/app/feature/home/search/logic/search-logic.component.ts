@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource, MatDialog, MatSnackBar } from '@angular/material';
 import { STOCK_COL_OBJ } from '@shared/const/column.const';
 import * as GLOBAL from '@shared/const/url.const';
@@ -11,6 +11,7 @@ import { NanService } from 'app/core/service/mapper/nan.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { SearchMapperService } from 'app/core/service/mapper/search-mapper.service';
 import { HistoryService } from 'app/core/service/firebase/history.service';
+import { EmitService } from 'app/core/service/emit/emit.service';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -24,10 +25,7 @@ export class SearchLogicComponent implements OnInit {
   text: 'Search Results are'
   isSearch = 'true';
   tmpAccount: Account;
-  stockObservable$: Observable<Stock[]>;
-  _stockObservable$: BehaviorSubject<Stock[]>;
   stockArr: Stock[];
-  stockMat: MatTableDataSource<BehaviorSubject<Stock[]>>;
   stockCol: ColumnObject[] = STOCK_COL_OBJ;
   searchArr: SearchHistory[];
 
@@ -41,26 +39,24 @@ export class SearchLogicComponent implements OnInit {
     private stockMapperService: StockMapperService,
     public dialog: MatDialog,
     private nanService: NanService,
-    private searchMapperService: SearchMapperService,
-    private historyService: HistoryService
+    private changeDetectorRefs: ChangeDetectorRef,
+    private historyService: HistoryService,
+    private emitService: EmitService
   ) { }
 
   ngOnInit() {
-    // Data is expected to be an object, with keys that match the requested root fields in your document (pos in this case). 
-    // Apollo expects to a value at data.pos, but since data is an array and doesn't have this property, it returns undefined.
-
-    // HTTP FindAllStocks Service Call
-
-
-    // HTTP FindAllSearchHistory Call
-  }
-  // https://stackoverflow.com/questions/54375073/cannot-use-observable-as-datasource-for-mattable-appears-empty
-  public onSubmit(value: string): void {
+    this.changeDetectorRefs.detectChanges();
+}
+    public onSubmit(value: string): void {
+    console.log('value of submit', value);
     this.httpService.getIex(value).subscribe(data => {
       this.stockArr = this.stockMapperService.mapStockArray(data);
       this.stockArr = this.nanService.mapStockArray(this.stockArr);
-      console.log('Data retrieved from getIEX', this.stockArr);
-      this.historyService.addHistory(value);
+      console.log('Data retrieved from getIEX', this.stockArr);      
+      this.historyService.addHistory(value);  
+      this.changeDetectorRefs.detectChanges();
+      this.emitService.refreshTable();
+      console.log('Done', this.stockArr);
     },
       err => console.log('HTTP Error for getIEX: ', err),
       () => console.log('HTTP getIEX complete.')

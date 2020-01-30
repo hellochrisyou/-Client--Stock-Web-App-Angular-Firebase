@@ -4,6 +4,9 @@ import { Stock } from '@shared/interface/models';
 import { Observable } from 'rxjs';
 
 import { AuthService } from '../auth/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { User } from 'firebase';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -17,32 +20,52 @@ export class StockService {
   constructor(
     private afs: AngularFirestore,
     private auth: AuthService,
+    private snackBar: MatSnackBar,
+    private angularFireAuth: AngularFireAuth,
   ) { }
 
   public addStock(stock: Stock) {
+    this.path = this.angularFireAuth.auth.currentUser.email + '-stock';
     this.stock = {
+      options: 'options',
       uId: '',
       symbol: stock.symbol,
-      name:stock.exchange,
-      exchange:stock.exchange,
-      open:stock.open,
-      low:stock.low,
-      high:stock.high,
-      latestPrice:stock.latestPrice,
-      change:stock.change,
-      changePercent:stock.changePercent,
-      week52Low:stock.week52Low,
-      week52High:stock.week52High,
-      ytdChange:stock.ytdChange
+      name: stock.exchange,
+      exchange: stock.exchange,
+      open: stock.open,
+      low: stock.low,
+      high: stock.high,
+      latestPrice: stock.latestPrice,
+      change: stock.change,
+      changePercent: stock.changePercent,
+      week52Low: stock.week52Low,
+      week52High: stock.week52High,
+      ytdChange: stock.ytdChange
     };
+    console.log('addStock', this.stock);
     return new Promise<any>((resolve, reject) => {
-      this.path = this.auth.getUser().email + '-stock';
       this.afs.collection(this.path)
         .add(this.stock)
         .then(res => {
-          stock.uId  = res.id;
-          this.afs.collection(this.path).doc(stock.uId).set({uId: res.id});
+          stock.uId = res.id;
+           this.afs.collection(this.path).doc(stock.uId).set({ 
+            uId: res.id, 
+            symbol: this.stock.symbol, 
+            options: 'options',
+            name: this.stock.name,  
+            exchange: this.stock.name,  
+            open: this.stock.open,  
+            low: this.stock.low,  
+            high: this.stock.high,  
+            latestPrice: this.stock.latestPrice,  
+            change: this.stock.change,  
+            changePercent: this.stock.changePercent,  
+            week52Low: this.stock.week52Low,  
+            week52High: this.stock.week52High,  
+            ytdChange: this.stock.ytdChange,  
+          });
           console.log('Response from Added Collection: ', res);
+          this.openSnackBar('Stock Added', 'Succesful');
         }, err => reject(err)
         );
     });
@@ -50,21 +73,30 @@ export class StockService {
 
 
   public getStocks(): AngularFirestoreCollection<Stock> {
-    return this.afs.collection<Stock>(this.auth.getUser().email + '-stock');
+    this.path = this.angularFireAuth.auth.currentUser.email + '-stock';
+    return this.afs.collection<Stock>(this.path);
   }
 
   public deleteStock(stock: Stock) {
-    this.path = this.auth.getUser().email + '-stock';
+    this.path = this.angularFireAuth.auth.currentUser.email + '-stock';
     console.log('path', this.path);
-
-    this.getStocks().snapshotChanges().subscribe(value => {
-      console.log('value here', value);
-      value.forEach(data => {
-        if (stock.uId === data.payload.doc.id) {
-          this.afs.collection(this.path).doc(data.payload.doc.id).delete();
-        }
-      })
-    })    
+    return new Promise<any>((resolve, reject) => {
+      this.getStocks().snapshotChanges().subscribe(value => {
+        console.log('value here', value);
+        value.forEach(data => {
+          if (stock.uId === data.payload.doc.id) {
+            this.afs.collection(this.path).doc(data.payload.doc.id).delete();
+          }
+          this.openSnackBar('Stock Deleted', 'Succesful');
+        })
+      });
+    });
   }
-  
+
+  public openSnackBar(message: string, title: string): void {
+    this.snackBar.open(message, title, {
+      duration: 2000,
+    });
+
+  }
 }

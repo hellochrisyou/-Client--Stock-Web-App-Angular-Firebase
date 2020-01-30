@@ -1,20 +1,22 @@
 import { Injectable, NgZone } from '@angular/core';
-import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { auth, User } from 'firebase';
-import { Observable, of } from 'rxjs';
-import { MatSnackBar, MatDialog } from '@angular/material';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 import { ConfirmComponent } from '@shared/dialog/confirm/confirm.component';
+import { User } from '@shared/interface/models';
+import { auth } from 'firebase';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { CloseDialogService } from '../close-dialog/close-dialog.service';
-import { switchMap, first } from 'rxjs/operators';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { UserService } from '../firebase/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  data: User;
+  userData: User;
   
   private _user: Observable<User>; // Added with UserStore
 
@@ -29,11 +31,11 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone,
     public afAuth: AngularFireAuth,
-    private angularFireAuth: AngularFireAuth,
     private snackBar: MatSnackBar,
     private afs: AngularFirestore,
     public dialog: MatDialog,
-    private closeDialogService: CloseDialogService
+    private closeDialogService: CloseDialogService,
+    private userService: UserService
   ) {
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
@@ -48,15 +50,20 @@ export class AuthService {
 
   /* Sign up */
   public signupEmail(email: string, password: string) {
-    this.angularFireAuth
+    this.afAuth
       .auth
       .createUserWithEmailAndPassword(email, password)
       .then(res => {
+        this.userData = {
+          email: res.user.email,
+          displayName: res.user.email,
+          photoURL: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
+        }
+        this.userService.addUser(this.userData);
         console.log('Successfully signed up!', res);
-        this.updateUserData(res.user) //Added with UserStore
         this.snackBar.open('Sign Up', 'SUCCESS', {
         });
-        this.closeDialogService.closeSignupDialog();
+        this.router.navigateByUrl('search-stock');
       })
       .catch(error => {
         console.log(error);
@@ -68,9 +75,14 @@ export class AuthService {
   OAuthProvider(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((res) => {
-        this.updateUserData(res.user) //Added with UserStore
         this.ngZone.run(() => {
           console.log('ngZone Run', res);
+          this.userData = {
+            email: res.user.displayName,
+            displayName: res.user.email,
+            photoURL: res.user.photoURL,
+          }
+          this.userService.addUser(this.userData);
           this.router.navigate(['home']);
         });
       }).catch((error) => {
@@ -83,6 +95,7 @@ export class AuthService {
     return this.OAuthProvider(new auth.GoogleAuthProvider())
       .then(res => {
         console.log('Google Successfully logged in!', res);
+        this.userData = {};
       }).catch(error => {
         console.log(error);
       });
@@ -93,33 +106,15 @@ export class AuthService {
     return this.OAuthProvider(new auth.GithubAuthProvider())
       .then(res => {
         console.log('Github Successfully logged in!');
+        this.userData = {};
       }).catch(error => {
         console.log(error);
       });
   }
 
-  public getUser(): User {
-    return this.angularFireAuth.auth.currentUser;    
+  get authenticated(): boolean {
+    return this.afAuth.authState !== null;
   }
-
-  public updateUserData( user: User) { // Added with UserStore
-    // Sets user data to firestore on login
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-
-    this.data = user;
-    console.log('user', user); 
-    user.updateProfile({
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-    }).then(function() {
-      console.log('User Updated',user);
-    }).catch(function(error) {      
-      console.log('User update failed');
-    });    
-
-    return userRef.set(this.data, { merge: true });
-  }
-
 
   public signOut() {
     this.afAuth.auth.signOut().then(() => {
@@ -129,12 +124,12 @@ export class AuthService {
 
   /* Sign in */
   public signinEmail(email: string, password: string) {
-    this.angularFireAuth
+    this.afAuth
       .auth
       .signInWithEmailAndPassword(email, password)
       .then(credential => {
         console.log('Successfully signed in!', credential);
-        this.updateUserData(credential.user);
+        this.router.navigateByUrl('search-stock');        
       })
       .catch(err => {
         console.log('Something is wrong:', err.message);
@@ -152,5 +147,7 @@ export class AuthService {
     });
     dialogRef.afterClosed().subscribe();
   }
+
+ 
 }
 

@@ -1,6 +1,6 @@
-<section fxLayout="column" fxLayoutAlign="center center">
-    <base-table class="stockTable" *ngIf="stockArr" [isSearch]="isSearch" [columnIds]="stockCol"
-        [columnObjects]="stockCol" [dataArray]="stockArr">
-    </base-table>
-    <shared-footer *ngIf="!stockArr"></shared-footer>
+<section fxLayout="row" fxLayoutAlign="center start">
+    <base-table *ngIf="stockArr.length>0" [dataArray]="stockArr" [columnIds]="stockCol" [columnObjects]="stockCol"
+    [isSearch]="isSearch">
+</base-table>
+    <shared-footer *ngIf="stockArr.length<1"></shared-footer>
 </section>

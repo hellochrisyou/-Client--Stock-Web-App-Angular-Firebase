@@ -1,12 +1,11 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { KeyValuePair } from '@shared/interface/dto.interface';
-import { SearchHistory, Stock, JsonString } from '@shared/interface/models';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map, retry } from 'rxjs/operators';
-import * as GLOBAL from '@shared/const/url.const';
 import { MatDialog } from '@angular/material';
-import { ChartComponent } from '@shared/dialog/chart/chart.component';
+import * as GLOBAL from '@shared/const/url.const';
+import { JsonString } from '@shared/interface/models';
+import { throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { KeyValuePair } from '@shared/interface/interface';
 
 export const httpOptions = {
   headers: new HttpHeaders({

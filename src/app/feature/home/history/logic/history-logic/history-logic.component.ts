@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpService } from 'app/core/service/http/http.service';
 import * as GLOBAL from '@shared/const/url.const';
 import { SearchHistory } from '@shared/interface/models';
@@ -11,6 +11,8 @@ import { AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/f
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { EmitService } from 'app/core/service/emit/emit.service';
+import { HistoryMapperService } from 'app/core/service/mapper/history-mapper.service';
 
 @Component({
   selector: 'history-logic',
@@ -18,7 +20,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./history-logic.component.scss']
 })
 export class HistoryLogicComponent implements OnInit {
-  histories: SearchHistory[];
+  histories: SearchHistory[] = [];
 
   isSearch: string = 'neither';
   searchCol: ColumnObject[] = SEARCH_COL_OBJ;
@@ -26,13 +28,18 @@ export class HistoryLogicComponent implements OnInit {
   constructor(
     private historyService: HistoryService,
     private router: Router,
+    private changeDetectorRefs: ChangeDetectorRef,
     private snackBar: MatSnackBar,
+    private emitService: EmitService,
+    private historyMapperService: HistoryMapperService
   ) { }
 
   ngOnInit() {    
-     this.historyService.getAllHistory().valueChanges().pipe(map(data => data)).subscribe( value => {
-      console.log('observable histories', value)
-      this.histories = value;
+     this.historyService.getAllHistory().valueChanges().pipe(map(data => data)).subscribe( data => {
+      console.log('observable histories', data);
+      this.histories = this.historyMapperService.mapHistoryArray(data);
+      this.changeDetectorRefs.detectChanges();
+      this.emitService.refreshTable();
     });
   }
 
@@ -40,6 +47,5 @@ export class HistoryLogicComponent implements OnInit {
     this.historyService.clearHistory();
     this.snackBar.open('Delete Search History', 'SUCCESS', {
     });
-    this.router.navigateByUrl('search-stock');
   }
 }
