@@ -43,7 +43,7 @@ export class HistoryService {
         thisValue = 'Volume'
         break;
       }
-      default:  {
+      default: {
         break;
       }
     }
@@ -52,7 +52,7 @@ export class HistoryService {
       uId: '',
       name: thisValue
     };
-    
+
     return new Promise<any>((resolve, reject) => {
       this.afs.collection(this.path)
         .add(this.history)
