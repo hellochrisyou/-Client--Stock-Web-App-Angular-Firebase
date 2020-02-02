@@ -84,3 +84,9 @@ main {
 p {
     text-align: justify;
 }
+
+@media screen and (max-width: 1025px) {
+    #mobile-picture {
+        margin-bottom: 10vh;
+    }
+}

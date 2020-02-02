@@ -16,20 +16,18 @@ span {
 img {
 	margin: 0;
 }
-#twitter-logo {
-	height: 40px;
-	margin: 0 16px;
-	&:hover {
-		opacity: 0.8;
-	}
-}
+// #twitter-logo {
+// 	height: 40px;
+// 	margin: 0 16px;
+// 	&:hover {
+// 		opacity: 0.8;
+// 	}
+// }
 }
 
 a {
 border: none;
 }
-
-
 
 .spacer {
 flex: 1;
@@ -37,6 +35,7 @@ text-align: right;
 }
 #left-spacer {
 text-align: left;
+margin-left: 11vw; 
 }
 #right-spacer {
 	padding-right: 1vw;
@@ -60,25 +59,25 @@ mat-icon:hover {
 color: rgb(221,0,49);
 }
 
-i.fa.fa-twitter:hover {
-color: rgb(8,160,233);
-}
+// i.fa.fa-twitter:hover {
+// color: rgb(8,160,233);
+// }
 
-i.fa.fa-github:hover {
-color: black;
-}
+// i.fa.fa-github:hover {
+// color: black;
+// }
 
-i.fa.fa-instagram:hover {
-color: rgb(221,0,49);
-}
+// i.fa.fa-instagram:hover {
+// color: rgb(221,0,49);
+// }
 
-i.fa.fa-linkedin:hover {
-color: rgb(0,119,181);
-}
+// i.fa.fa-linkedin:hover {
+// color: rgb(0,119,181);
+// }
 
-i.fa.fa-facebook:hover {
-color: rgb(59,89,152);
-}
+// i.fa.fa-facebook:hover {
+// color: rgb(59,89,152);
+// }
 
 a {
 margin: 0 10px 0;
@@ -101,4 +100,10 @@ h1.mat-typography {
 
 i {
 font-size: 2rem;
+}
+
+@media screen and (max-width: 1366px) { 
+	#left-spacer {
+		margin-left: 15vw;	
+	}
 }

@@ -1,5 +1,5 @@
 <main>
-    <div *ngIf="auth.user | async; then authenticated else guest">
+    <div *ngIf="auth.isAuthenticated; then authenticated else guest">
     </div>
     <ng-template #guest>
         <div class="container" id="container" [ngClass]="condition?'right-panel-active':''">
@@ -28,7 +28,7 @@
     </ng-template>
     <ng-template #authenticated>
         <!-- Put in photo -->
-        <div fxLayout="column" fxLayoutAlign="center center">
+        <div id="mobile-picture" fxLayout="column" fxLayoutAlign="center center">
         <h4>Available on Mobile</h4><br/>
             <div>
                 <img class="margin-center mat-elevation-12" src="../../../../../assets/img/mobile-phone.png">

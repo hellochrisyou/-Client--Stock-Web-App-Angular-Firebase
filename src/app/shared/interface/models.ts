@@ -16,12 +16,11 @@ export interface Stock {
 }
 
 export interface User {
+  uid?: string;
   displayName?: string;
   email?: string;  
   photoURL?: string;
-  age?: number;
   country?: string;  
-  retirementAge?: number;
 }
 
 export interface SearchHistory {

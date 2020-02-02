@@ -1,0 +1,51 @@
+<section>
+<form [formGroup]="formGroup">
+    <div fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="1.5vw">
+        <mat-form-field>
+            <mat-label>DisplayName</mat-label>
+            <br>
+            <input matInput placeholder="Name" formControlName="displayNameCtrl" required placeholder="Name"
+                [errorStateMatcher]="matcher">
+            <mat-hint>This will not change any 3rd-party provider name properties</mat-hint>
+            <mat-error *ngIf="formGroup.controls.displayNameCtrl.hasError('required')">
+                Display Name is <strong>Required</strong>
+            </mat-error>
+            <mat-error *ngIf="formGroup.controls.displayNameCtrl.hasError('maxlength')">
+                Maximum of
+                <strong>{{formGroup.controls.displayNameCtrl.errors.maxlength.requiredLength}}</strong>
+                characters
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Country</mat-label>
+            <br>
+            <input matInput placeholder="Country" formControlName="countryCtrl" required placeholder="Name"
+                [errorStateMatcher]="matcher">
+            <mat-hint>Abbreviations accepted</mat-hint>
+            <mat-error *ngIf="formGroup.controls.countryCtrl.hasError('required')">
+                Country is <strong>Required</strong>
+            </mat-error>
+            <mat-error *ngIf="formGroup.controls.countryCtrl.hasError('maxlength')">
+                Maximum of
+                <strong>{{formGroup.controls.countryCtrl.errors.maxlength.requiredLength}}</strong>
+                characters
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Photo URL</mat-label>
+            <br>
+            <input matInput formControlName="photoCtrl" required placeholder="http" [errorStateMatcher]="matcher">
+            <mat-hint>Start with http:// or https://</mat-hint>
+            <mat-error *ngIf="formGroup.controls.photoCtrl.hasError('required')">
+                PhotoURL is <strong>Required</strong>
+            </mat-error>
+            <mat-error *ngIf="formGroup.controls.photoCtrl.hasError('pattern')">
+                Invalid <Strong>URL</Strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="space-around center">
+        <button class="non-home-button mat-elevation-z7 margin-center" type="submit" (click)="submit()">Submit</button>
+    </div>
+</form>
+</section>

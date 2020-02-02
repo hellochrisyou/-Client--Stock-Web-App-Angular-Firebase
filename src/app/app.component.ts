@@ -13,7 +13,7 @@ export class AppComponent {
 
   constructor(public auth: AuthService) { 
     console.log('beginning user', this.auth.user);
-    console.log('beginning authenticateds', this.auth.authenticated);
+    console.log('beginning authenticateds', this.auth.isAuthenticated);
   }
 
   getState(outlet) {

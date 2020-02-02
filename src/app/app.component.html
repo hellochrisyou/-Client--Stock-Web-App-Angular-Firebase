@@ -36,7 +36,7 @@
     <section id="main-section">
       <!-- Navigate -->
       <br />
-    <div *ngIf="auth.authenticated" class="card-container">
+    <div *ngIf="auth.isAuthenticated" class="card-container">
         <a class="card mat-elevation-z1" routerLink="search-stock" routerLinkActive="active">
           <mat-icon class="navi-icon">search</mat-icon>
           <span>Search</span>

@@ -55,16 +55,6 @@ export class LoginLogicComponent extends CreateBaseForm implements OnInit, OnDes
     super.ngOnDestroy();
   }
 
-  public loginGithub(): void {
-    // if (!this.formGroup.valid) {
-    //   alert('Please fill all the required fields')
-    //   return false;
-    // } else {
-    //   console.log(this.formGroup.value)
-    // }
-    this.auth.signinGithub();
-  }
-
   public loginGoogle(): void {
     // if (!this.formGroup.valid) {
     //   alert('Please fill all the required fields')
