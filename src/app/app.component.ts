@@ -11,7 +11,10 @@ import { AuthService } from './core/service/auth/auth.service';
 export class AppComponent {
   title = 'Stock-Web-App';
 
-  constructor(public auth: AuthService) { }
+  constructor(public auth: AuthService) { 
+    console.log('beginning user', this.auth.user);
+    console.log('beginning authenticateds', this.auth.authenticated);
+  }
 
   getState(outlet) {
     return outlet.activatedRouteData.state;

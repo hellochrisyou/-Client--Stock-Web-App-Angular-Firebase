@@ -113,7 +113,7 @@ export class AuthService {
   }
 
   get authenticated(): boolean {
-    return this.afAuth.authState !== null;
+    return this.afAuth.auth.currentUser !== null;
   }
 
   public signOut() {

@@ -25,11 +25,34 @@ export class HistoryService {
   ) { }
 
   public addHistory(value: string) {
+    let thisValue;
+    switch (value) {
+      case 'mostactive': {
+        thisValue = 'Most Active'
+        break;
+      }
+      case 'gainers': {
+        thisValue = 'Gainers'
+        break;
+      }
+      case 'losers': {
+        thisValue = 'Losers'
+        break;
+      }
+      case 'iexvolume': {
+        thisValue = 'Volume'
+        break;
+      }
+      default:  {
+        break;
+      }
+    }
     this.path = this.angularFireAuth.auth.currentUser.email + '-history';
     this.history = {
       uId: '',
-      name: value
+      name: thisValue
     };
+    
     return new Promise<any>((resolve, reject) => {
       this.afs.collection(this.path)
         .add(this.history)
@@ -37,7 +60,7 @@ export class HistoryService {
           this.history.uId = res.id;
           this.afs.collection(this.path).doc(this.history.uId).set({
             uId: res.id,
-            name: value
+            name: thisValue
           });
           console.log('Response from Added Collection: ', res);
         }, err => reject(err)
