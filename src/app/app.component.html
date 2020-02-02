@@ -3,9 +3,46 @@
   <header>
     <toolbar-header></toolbar-header>
   </header>
+
+
+  <div fxShow.xs="true" fxShow.sm="true" fxShow.md="true" fxHide.gt-lg="true" fxHide="true"  class="menu-collapsed">
+    <div class="bar"></div>
+    <nav>
+      <ul>
+        <li><a routerLink="search-stock" routerLinkActive="active">Search</a></li>
+        <li><a routerLink="my-list" routerLinkActive="active">My List</a></li>
+        <li><a routerLink="history" routerLinkActive="active">Search History</a></li>
+        <li><a routerLink="profile" routerLinkActive="active">Account</a></li>
+      </ul>
+    </nav>
+  </div>
+
+
+
+  <!-- filters -->
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+      <filter id="shadowed-goo">
+
+        <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+        <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
+        <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2"
+          result="shadow" />
+        <feOffset in="shadow" dx="1" dy="1" result="shadow" />
+        <feBlend in2="shadow" in="goo" result="goo" />
+        <feBlend in2="goo" in="SourceGraphic" result="mix" />
+      </filter>
+      <filter id="goo">
+        <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+        <feBlend in2="goo" in="SourceGraphic" result="mix" />
+      </filter>
+    </defs>
+  </svg>
+
   <!-- Highlight Card -->
   <div class="card highlight-card card-small mat-elevation-z7">
-
     <svg id="rocket" alt="Rocket Ship" xmlns="http://www.w3.org/2000/svg" width="101.678" height="101.678"
       viewBox="0 0 101.678 101.678">
       <g id="Group_83" data-name="Group 83" transform="translate(-141 -696)">
@@ -32,29 +69,28 @@
     </svg>
   </div>
 
-  <!-- <div *ngIf="auth.user | async as user"> -->
-    <section id="main-section">
-      <!-- Navigate -->
-      <br />
+  <!-- Navigate -->
+  <section fxShow.xs="false" fxShow.sm="false" fxShow.md="false" fxShow.gt-lg="true" fxShow="true" id="main-section">
+    <br />
     <div *ngIf="auth.isAuthenticated" class="card-container">
-        <a class="card mat-elevation-z1" routerLink="search-stock" routerLinkActive="active">
-          <mat-icon class="navi-icon">search</mat-icon>
-          <span>Search</span>
-        </a>
-        <a class="card mat-elevation-z1" routerLink="/my-list" routerLinkActive="active">
-          <mat-icon class="navi-icon">assignment</mat-icon>
-          <span>My list</span>
-        </a> 
-        <a class="card mat-elevation-z1" routerLink="/profile" routerLinkActive="active">
-          <mat-icon class="navi-icon">account_circle</mat-icon> 
-          <span>User</span>
-        </a>
-        <a class="card mat-elevation-z1" routerLink="/history" routerLinkActive="active">
-          <mat-icon class="navi-icon">assignment</mat-icon>
-          <span>History</span>
-        </a>
-      </div>
-    </section>
+      <a class="card mat-elevation-z1" routerLink="search-stock" routerLinkActive="active">
+        <mat-icon class="navi-icon">search</mat-icon>
+        <span>Search</span>
+      </a>
+      <a class="card mat-elevation-z1" routerLink="my-list" routerLinkActive="active">
+        <mat-icon class="navi-icon">assignment</mat-icon>
+        <span>My list</span>
+      </a>
+      <a class="card mat-elevation-z1" routerLink="history" routerLinkActive="active">
+        <mat-icon class="navi-icon">history</mat-icon>
+        <span>History</span>
+      </a>
+      <a class="card mat-elevation-z1" routerLink="profile" routerLinkActive="active">
+        <mat-icon class="navi-icon">account_circle</mat-icon>
+        <span>User</span>
+      </a>
+    </div>
+  </section>
   <!-- </div> -->
   <div id="div-router" [@routerTransition]="getState(o)? o.activatedRoute : ''">
     <router-outlet #o="outlet"></router-outlet>

@@ -30,6 +30,12 @@ export class ProfileViewComponent implements OnInit {
       } else {
         console.log('Document data:', doc.data());
         this.thisUser = doc.data();
+        if (this.thisUser.country === '') {
+          this.thisUser.country = 'N/A';        
+        } 
+        if (this.thisUser.photoURL === '') {
+          this.thisUser.country = 'N/A';        
+        }
       }
     }, (err => {
       console.log('Error fetching document: ', err);

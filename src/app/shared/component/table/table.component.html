@@ -13,9 +13,9 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>{{col.propertyName}} </th>
                 <td mat-cell *matCellDef="let dataArray" [style.color]="setDataColor(dataArray[col.propertyName])">
                     {{dataArray[col.propertyName]}}
-                    <button *ngIf="col.propertyName==='options'" mat-button>
+                    <!-- <button *ngIf="col.propertyName==='options'" mat-button>
                         <img id="option-image" src="../../../../assets/img/option-mat-table.png">
-                    </button>
+                    </button> -->
                 </td>
             </ng-container>
             <ng-container matColumnDef="expandedDetail">
@@ -56,7 +56,7 @@
                 <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
             </div>
         </table>
-        <mat-paginator class="mat-elevation-z7" [pageSizeOptions]="[5]">
+        <mat-paginator class="mat-elevation-z7" [pageSizeOptions]="[10]">
         </mat-paginator>
     </section>
     <div fxFlex></div>

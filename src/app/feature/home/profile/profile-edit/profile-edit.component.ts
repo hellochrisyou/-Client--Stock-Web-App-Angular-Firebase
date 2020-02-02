@@ -57,9 +57,9 @@ export class EditProfileComponent extends CreateBaseForm {
     this.user.country = this.formGroup.get('countryCtrl').value;
     this.user.photoURL = this.formGroup.get('photoCtrl').value;    
     this.user.email = this.af.auth.currentUser.email;
-    this.user.uid =  this.af.auth.currentUser.email;
-    this.auth.updateUserData(this.user);
+    this.user.uid =  this.af.auth.currentUser.email;    
     this.changeDetectorRefs.detectChanges();
+    this.auth.updateUserData(this.user);
     this.snackBar.open('Sign Up', 'SUCCESS', {});
     this.router.navigateByUrl('/home');
   }

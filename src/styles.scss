@@ -6,7 +6,12 @@ html, body {
     max-height:100vh;
     width: 100vw;
     position: absolute;  
+    overflow: visible;
     font-family: 'Montserrat', sans-serif;
+}
+
+section {
+    overflow: visible
 }
 
 * {
@@ -103,10 +108,8 @@ app-profile{
     width: 100vw; 
 }
 
- 
 my-list {
     position:fixed;
-    top: 30vh;
     bottom: 0;
     height: 70vh;
     width: 100vw; 
@@ -118,68 +121,17 @@ history-logic {
     width: 100vw;
 }
 
-// .form-container input {
-//     background: #eee;
-//     border: none;
-//     padding: 12px 15px;
-//     margin: 8px 0;
-//     width: 100%;
-// }
-// Input Mixin Don't need..?
-// input[type=text] {
-//     width: 240px;
-//     text-align: center;
-//     background: transparent;
-//     border: none;
-//     border-bottom: 1px solid #fff;
-//     font-family: 'PLay', sans-serif;
-//     font-size: 16px;
-//     font-weight: 200px;
-//     padding: 10px 0;
-//     transition: border 0.5s;
-//     outline: none;
-//     color: #fff;
-//     font-weight: bold;
-// }
-
-// input[type=password] {
-//     width: 240px;
-//     text-align: center;
-//     background: transparent;
-//     border: none;
-//     border-bottom: 1px solid #fff;
-//     font-family: 'PLay', sans-serif;
-//     font-size: 16px;
-//     font-weight: bold;
-//     padding: 10px 0;
-//     transition: border 0.5s;
-//     outline: none;
-//     color: #fff;
-// }
-
-// input[type=email] {
-//     width: 240px;
-//     text-align: center;
-//     background: transparent;
-//     border: none;
-//     border-bottom: 1px solid #fff;
-//     font-family: 'PLay', sans-serif;
-//     font-size: 16px;
-//     font-weight: 200px;
-//     padding: 10px 0;
-//     transition: border 0.5s;
-//     outline: none;
-//     color: #fff;
-//     font-weight: bold;
-// }
-// .form-container{
-//     position: absolute;
-//     top: 0;
-//     height: 100%;
-//     transition: all 0.6s ease-in-out;
-// }
-@media screen and (max-width: 1025px) {
+@media screen and (max-width: 700px) {
     my-list {
-        margin-top: 20vw;
+        top: 20vh;
+    }
+    base-table {
+        position: absolute;
+        left: 0;
+        top: 40vh;
+    }
+    #history-table {
+        top: 10vw;
+        left: 25vw;
     }
 }

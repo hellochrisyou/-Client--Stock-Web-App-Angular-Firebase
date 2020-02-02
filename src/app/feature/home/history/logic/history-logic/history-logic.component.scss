@@ -9,3 +9,9 @@ button.non-home-button {
 #history-table {
     margin-right: 6vw;
 }
+
+@media screen and (max-width: 700px) {
+    #history-table {
+        margin-right: 25vw;
+    }
+}
