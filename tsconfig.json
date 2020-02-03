@@ -12,9 +12,6 @@
       "@services/*": [
         "app/core/services/*"
       ],
-      "@query/*": [
-        "app/graphQL/query/*"
-      ],
       "@styles/*": [
         "styles/*"
       ],
@@ -23,10 +20,7 @@
       ],
       "@home/*": [
         "app/feature/home/*"
-      ],
-      "@constant/*": [
-        "app/constant/*"
-      ],
+      ]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

@@ -15,10 +15,6 @@ form h1, span   {
     color: black;
 }
     
-p {
-    color:black;
-    font-weight: normal;
-}
 
 
   .navi-icon {
@@ -67,11 +63,6 @@ a:hover {
 mat-toolbar.HomeComponent {
     top:0;
     width:100%;
-}
-
-h1#mobile-signin-title {
-    margin-top:-5vw;
-    text-align: center;
 }
 
 main {

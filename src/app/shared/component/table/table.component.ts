@@ -3,16 +3,13 @@ import { MatDialog } from '@angular/material';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ChartComponent } from '@shared/component/dialog/chart/chart.component';
+import { ErrorDialogComponent } from '@shared/component/dialog/error/error.component';
 import { COLS_DISPLAY } from '@shared/const/column.const';
-import { ChartComponent } from '@shared/dialog/chart/chart.component';
-import { ErrorComponent } from '@shared/dialog/error/error.component';
 import { SearchHistory, Stock } from '@shared/interface/models';
 import { expandRowTransition } from 'app/core/animation/animation';
 import { EmitService } from 'app/core/service/emit/emit.service';
-import { HistoryService } from 'app/core/service/firebase/history.service';
 import { StockService } from 'app/core/service/firebase/stock.service';
-import { HttpService } from 'app/core/service/http/http.service';
-import { NanService } from 'app/core/service/mapper/nan.service';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -25,13 +22,12 @@ export class TableComponent implements OnInit {
 
   tmpSearchArr: SearchHistory[] = [];
   expandRow: Stock;
-  columns_display = COLS_DISPLAY;
-
+  columnsDisplay = COLS_DISPLAY;
+  dataSource: MatTableDataSource<Stock | SearchHistory>;
+  index: number;
 
   private _isStock: boolean;
   private _isSearch: string;
-  public dataSource: MatTableDataSource<Stock | SearchHistory>;
-  public index: number;
   private _columnIds: string[] = [];
   private _columnObjects: any[];
   private _type: string;
@@ -57,7 +53,7 @@ export class TableComponent implements OnInit {
   }
 
   @Input()
-  public get dataArray():any[]{
+  public get dataArray(): any[] {
     return this._dataArray;
   }
   public set dataArray(value: any[]) {
@@ -91,36 +87,33 @@ export class TableComponent implements OnInit {
   }
 
   constructor(
-    private httpService: HttpService,
-    private nanService: NanService,
     public dialog: MatDialog,
-    private historyService: HistoryService,
     private stockService: StockService,
     private emitService: EmitService,
   ) {
-   }
+  }
 
-  public ngOnInit() {    
+  public ngOnInit() {
     this.emitService.refreshOutput.subscribe(x => {
       this.refresh();
     });
   }
 
-  public refresh(): void { 
+  public refresh(): void {
     this.dataSource = new MatTableDataSource<any>(this.dataArray);
     this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;    
-    console.log('emitted', this.dataArray);     
+    this.dataSource.paginator = this.paginator;
+    console.log('emitted', this.dataArray);
   }
 
   public select(value: number): void {
     if (this._isSearch === 'true') {
       console.log('select value: ', value);
-      console.log('datararay number', this.dataArray[value])
+      console.log('datararay number', this.dataArray[value]);
       this.stockService.addStock(this.dataArray[value]);
     } else {
       this.stockService.deleteStock(this.dataArray[value]);
-    }  
+    }
   }
 
   // SORTING
@@ -133,11 +126,11 @@ export class TableComponent implements OnInit {
   }
 
   // DIALOGS AND SNACKBARS
-  public openDialog(index: number, increment: string) {
+  public openDialog(index: number, incrementStr: string) {
     const dialogRef = this.dialog.open(ChartComponent, {
       data: {
         keyword: this.dataArray[index],
-        increment: increment
+        increment: incrementStr
       }
     });
 
@@ -145,10 +138,10 @@ export class TableComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
-  
 
-  public openErrorDialog(errorMessage: String): void {
-    const dialogRef = this.dialog.open(ErrorComponent, {
+
+  public openErrorDialog(errorMessage: string): void {
+    const dialogRef = this.dialog.open(ErrorDialogComponent, {
       data: {
         title: errorMessage,
         subtitle: 'Saving stock',
@@ -164,7 +157,7 @@ export class TableComponent implements OnInit {
   public setDataColor(value: number | string) {
     if (typeof value !== 'string') {
       if (value > 0) {
-        return '#4bb543'
+        return '#4bb543';
       } else {
         return '#dd0031';
       }

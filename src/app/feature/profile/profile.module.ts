@@ -1,22 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared/shared.module';
-
-import { EditProfileComponent } from './profile-edit/profile-edit.component';
 import { ProfileRoutingModule } from './profile-routing.module';
-import { ProfileViewComponent } from './profile-view/profile-view.component';
-import { ProfileComponent } from './profile.component';
-
-
+import * as fromProfile from '.';
 
 @NgModule({
-  declarations: [EditProfileComponent, ProfileComponent, ProfileViewComponent],
+  declarations: [...fromProfile.ProfileComponents],
   imports: [
     CommonModule,
     SharedModule,
     ProfileRoutingModule
   ],
-  exports: [EditProfileComponent, ProfileComponent, ProfileViewComponent]
+  exports: [...fromProfile.ProfileComponents]
 })
 export class ProfileModule { }
- 

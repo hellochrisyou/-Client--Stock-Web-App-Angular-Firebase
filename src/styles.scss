@@ -1,138 +1,150 @@
-/* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,800);
+html,
+body {
+	height: 100%;
+	max-height: 100vh;
+	width: 100vw;
+	position: absolute;
+	overflow: visible;
+	background: linear-gradient(90deg, rgba(9, 9, 121, 1) 0 rgba(9, 9, 121, 1) 100% rgba(0, 0, 0, 1) 100%);
+	font-family: Montserrat, sans-serif;
+	background-color: #21264B;
+}
 
-html, body { 
-    height: 100%;
-    max-height:100vh;
-    width: 100vw;
-    position: absolute;  
-    overflow: visible;
-    font-family: 'Montserrat', sans-serif;
-    // background-color: #21264B;
+// GLobal Colors
+h4, h1, h1.white-color div.mat-select-arrow, .mat-select-value, .mat-tab-label-content, .white-color {
+	color: #FFF;
+}
+
+.gold-color, mat-hint#mat-hint-2, mat-hint#mat-hint-3, mat-hint#mat-hint-4 {
+	color: #DAA520;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+	background-color: #DAA520;
+}
+
+.mat-form-field-underline {
+	background-color: #000!important;
+}
+
+.mat-form-field-ripple {
+	background-color: #A52A2A!important;
+}
+
+.mobile-h1 {
+	font-size: 1.25rem;
 }
 
 section {
-    overflow: visible
+	overflow: visible;
 }
 
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
-// Table
-table, mat-paginator {    
-    position: relative;
-    width: 100%;
-}
-
-mat-form-field {
-    margin-left: 1rem;
-}
-// End
 main {
-    font-family: 'Montserrat', sans-serif;
-    background: #f6f5f7;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
+	font-family: Montserrat, sans-serif;
+	background: #f6f5f7;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	max-height: max-content;
+	justify-content: center;
+	align-items: center;
+	background-color: transparent;
 }
 
 ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
-    margin-top:0.65rem;   
-    margin-left:3px;
+	margin-top: .65rem;
+	margin-left: 3px;
 }
-
 
 // ::ng-deep .mat-tab-body.mat-tab-body-active {
-//     min-height: 100vh !important;
+// min-height:100vh!important;
 // }
 
-div.mat-form-field-infix, input {
-    color:black;
-}
-
-// Misc
-span.mat-option-text {
-    color: black;
-}
-
-span.mat-form-field-label-wrapper label.mat-form-field-label span{
-    color:black;
-}
-
-a.card span {
-    color: black;
-}
-// End
-
-// Universal Mixin
 .text-center {
-    text-align: center;
+	text-align: center;
 }
-
 .margin-center {
-    margin: 0 auto;
+	margin: 0 auto;
 }
-
 .gold {
-    color:goldenrod !important;
+	color: #DAA520!important;
 }
-// End
-
 .tab-list, .tab-list .mat-tab-body-wrapper {
-  height: 100%;
+	height: 100%;
 }
-
-button.non-home-button {
-    background-color: hsl(346,100,43) !important;
-    color:white;
-} 
-
+.non-home-button {
+	background-color: #dd0031!important;
+	color: #FFF;
+}
 button:hover {
-    transform: scale3d(1.2, 1.2, 1); 
-	-webkit-transform: scale3d(1.2, 1.2, 1); 
-	transition: all 0.5s cubic-bezier(0.000, 1.270, 0.460, 1.650); 
-	-webkit-transition: all 0.5s cubic-bezier(0.000, 1.270, 0.460, 1.650); 
-  } 
-
-shared-footer{
-    position: fixed;
-    bottom: 0;
+	transform: scale3d(1.2, 1.2, 1);
+	-webkit-transform: scale3d(1.2, 1.2, 1);
+	transition: all .5s cubic-bezier(0, 1.27, 0.46, 1.65);
+	-webkit-transition: all .5s cubic-bezier(0, 1.27, 0.46, 1.65);
 }
- 
-app-profile{
-    position:fixed;
-    top: 30vh;
-    width: 100vw; 
+shared-footer {
+	position: fixed;
+	bottom: 0;
 }
-
+app-profile {
+	position: fixed;
+	top: 30vh;
+	width: 100vw;
+}
 my-list {
-    position:fixed;
-    height: 70vh;
-    width: 100vw; 
+	position: absolute;
+	top: 30vh;
+	width: 100vw;
 }
-
 history-logic {
-    position:fixed;
-    top: 30vh;
-    width: 100vw;
+	position: fixed;
+	top: 35vh;
+	width: 100vw;
+}
+.mat-label-black-color, // Misc
+span.mat-option-text, span.mat-form-field-label-wrapper label.mat-form-field-label span, a.card span {
+	color: #000;
+}
+input::-webkit-input-paceholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, input::-ms-input-placeholder, input::placeholder, div.mat-form-field-infix, input {
+	color: #FFF!important;
+}
+.mat-select-arrow  {
+  color: white;
+}
+.mat-form-field-label {
+    color: white !important;
+}
+.mat-form-field-underline {
+    background-color: rgb(226, 221, 221) !important;;
 }
 
+.mat-form-field-outline,
+  .mat-form-field-empty.mat-form-field-label,
+  .mat-form-field-label,
+  .mat-form-field-underline,
+  .mat-input-element,
+  ::placeholder {
+    color: black !important;
+  }
 
 @media screen and (max-width: 700px) {
-    my-list {
-        top: 20vh;
-    }
-    base-table {
-        position: absolute;
-        left: 0;
-        top: 40vh;
-    }
-    #history-table {
-        top: 10vw;
-        left: 25vw;
-    }
+	my-list {
+		top: 20vh;
+	}
+	
+	base-table {
+		position: absolute;
+		left: 0;
+		top: 40vh;
+	}
+	
+	#history-table {
+		top: 10vw;
+		left: 25vw;
+	}
 }

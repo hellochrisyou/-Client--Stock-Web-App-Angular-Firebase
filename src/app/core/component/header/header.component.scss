@@ -1,13 +1,12 @@
 @import '_font';
-
+@import '_color';
 @include font();
 
 .toolbar {
 padding:0 1vw 0 2vw;
 width: 100vw;
 height: 80px;   
-background: rgb(25,118,210) ;
-background: linear-gradient(90deg, rgba(25,118,210,1) 0%, rgba(0,128,255,1) 210%);
+background: $blue-background;
 color: white;
 font-weight: 600;
 span {
