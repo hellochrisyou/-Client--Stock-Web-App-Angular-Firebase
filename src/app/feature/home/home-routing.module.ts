@@ -7,7 +7,7 @@ import { HomeComponent } from './logic/home-logic.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent , data: {state: 'home' } 
+    component: HomeComponent, data: { state: 'home' }
   }
 ];
 
