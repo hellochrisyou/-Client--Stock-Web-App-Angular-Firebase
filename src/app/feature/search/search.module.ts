@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared/shared.module';
-import { SearchLogicComponent } from './logic/search-logic.component';
-import { SearchPresentationComponent } from './presentation/search-presentation.component';
 import { SearchRoutingModule } from './search-routing.module';
+import * as fromSearch from '.';
+import { SearchLogicComponent, SearchPresentationComponent } from '.';
+
 @NgModule({
   declarations: [
-    SearchLogicComponent, 
-    SearchPresentationComponent
+    SearchLogicComponent, SearchPresentationComponent
   ],
   imports: [
     CommonModule,
@@ -15,8 +15,7 @@ import { SearchRoutingModule } from './search-routing.module';
     SearchRoutingModule
   ],
   exports: [
-    SearchLogicComponent,
-    SearchPresentationComponent
+    SearchLogicComponent, SearchPresentationComponent
   ],
   providers: [
 

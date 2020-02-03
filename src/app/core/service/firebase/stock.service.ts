@@ -27,7 +27,7 @@ export class StockService {
   public addStock(stock: Stock) {
     this.path = this.angularFireAuth.auth.currentUser.email + '-stock';
     this.stock = {
-      options: 'options',
+      options: ' ',
       uId: '',
       symbol: stock.symbol,
       name: stock.exchange,
@@ -51,7 +51,7 @@ export class StockService {
            this.afs.collection(this.path).doc(stock.uId).set({ 
             uId: res.id, 
             symbol: this.stock.symbol, 
-            options: 'options',
+            options: ' ',
             name: this.stock.name,  
             exchange: this.stock.name,  
             open: this.stock.open,  
@@ -87,7 +87,7 @@ export class StockService {
           if (stock.uId === data.payload.doc.id) {
             this.afs.collection(this.path).doc(data.payload.doc.id).delete();
           }
-          this.openSnackBar('Stock Deleted', 'Succesful');
+          // this.openSnackBar('Stock Deleted', 'Succesful');
         })
       });
     });

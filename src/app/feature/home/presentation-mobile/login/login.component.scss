@@ -1,0 +1,31 @@
+@import "_control";
+@import "_button";
+@import "_font";
+@import "_container";
+@import "_color";
+
+@include input();
+@include button();
+@include font();
+@include container();
+
+section {
+  min-width: 100vw;
+  min-height: 70vh;
+}
+
+.social-container {
+  margin: 0;
+}
+
+a i {
+    color: black;
+}
+
+mat-card {
+  background: $blue-background
+}
+
+.mat-form-field-underline {
+    background-color: black !important;;
+}

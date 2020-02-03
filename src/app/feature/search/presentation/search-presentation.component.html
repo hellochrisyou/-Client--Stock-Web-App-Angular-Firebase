@@ -2,9 +2,9 @@
     <form [formGroup]="formGroup" (ngSubmit)="submitForm()" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
         <div>
             <mat-form-field>
-                <mat-label>Search Filter</mat-label>
-                <br/>
-                <mat-select [formControl]="searchOptCtrl" required>
+                <mat-label style="color:white">Search Filter</mat-label>
+                <br />
+                <mat-select formControlName="searchOptCtrl">
                     <mat-optgroup *ngFor="let group of searchGroup" [label]="group.name" [disabled]="group.disabled">
                         <mat-option *ngFor="let select of group.option" [value]="select.value">
                             {{select.viewValue}}
@@ -17,7 +17,7 @@
             </mat-form-field>
         </div>
         <div class="button-wrapper">
-            <button class="mat-elevation-z7" mat-flat-button color="primary"><span
+            <button class="non-home-button mat-elevation-z7" mat-flat-button><span
                     class="button-span">Submit</span></button>
         </div>
     </form>

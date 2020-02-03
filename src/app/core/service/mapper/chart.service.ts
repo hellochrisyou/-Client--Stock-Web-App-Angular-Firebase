@@ -10,7 +10,7 @@ export class ChartService {
   stockArr: Stock[];
   // tslint:disable-next-line: variable-name
   private _curStock: Stock = {
-    options: 'options'
+    options: ' '
   };
 
   dataArray: ChartKeyValue[];
@@ -39,7 +39,7 @@ export class ChartService {
     this.stockArr = [];
     data.forEach(x => {
       this.curStock = {
-        options: 'options'
+        options: ' '
       };
       this.curStock.symbol = symbol;
       this.curStock.low = x.low;
@@ -56,7 +56,7 @@ export class ChartService {
         continue;
       } else {
         this.curStock = {
-          options: 'options'
+          options: ' '
         };
         this.curStock.symbol = symbol;
         this.curStock.low = data[i-1].low;
@@ -73,8 +73,8 @@ export class ChartService {
       if (i % 21 !== 0) {
         continue;
       } else {
-        this.curStock = {
-          options: 'options'
+      this.curStock = {
+          options: ' '
         };
         this.curStock.symbol = symbol;
         this.curStock.low = data[i-1].low;
@@ -93,7 +93,7 @@ export class ChartService {
         continue;
       } else {
         this.curStock = {
-          options: 'options'
+          options: ' '
         };
         this.curStock.symbol = symbol;
         this.curStock.low = data[i-1].low;

@@ -1,0 +1,50 @@
+<section fxLayout="column" fxLayoutAlign="space-around center">
+    <mat-card class="mat-elevation-z5">
+        <form [formGroup]="formGroup">
+            <h1 class="mobile-h1">Create Account</h1>
+            <mat-form-field>
+                <mat-label class="mat-label-black-color">Email</mat-label>
+                <br>
+                <input matInput placeholder="Email" formControlName="signupEmailCtrl" [errorStateMatcher]="matcher">
+                <mat-hint class="gold">You can also <strong>login</strong> with a social media account!</mat-hint>
+                <mat-error *ngIf="formGroup.controls.signupEmailCtrl.hasError('maxlength')">
+                    Maximum of <strong>{{formGroup.controls.signupEmailCtrl.errors.maxlength.requiredLength}}</strong>
+                    characters
+                </mat-error>
+                <mat-error
+                    *ngIf="formGroup.controls.signupEmailCtrl.hasError('email') && !formGroup.controls.signupEmailCtrl.hasError('required')">
+                    Please enter a <strong>valid</strong> email address
+                </mat-error>
+                <mat-error r
+                    *ngIf="!formGroup.controls.signupEmailCtrl.hasError('email') && formGroup.controls.signupEmailCtrl.hasError('required')">
+                    Email is <strong>REQUIRED</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label class="mat-label-black-color">Password</mat-label>
+                <br>
+                <input matInput placeholder="Password" formControlName="signupPassCtrl" [errorStateMatcher]="matcher">
+                <mat-error
+                    *ngIf="!formGroup.get('signupPassCtrl').errors &&formGroup.controls.signupPassCtrl.hasError('minlength')">
+                    Miniumum of <strong>{{formGroup.controls.signupPassCtrl.errors.minlength.requiredLength}}</strong>
+                    characters
+                </mat-error>
+                <mat-error
+                    *ngIf="formGroup.get('signupPassCtrl').errors &&formGroup.controls.signupPassCtrl.hasError('maxlength')">
+                    Maximum of <strong>{{formGroup.controls.signupPassCtrl.errors.maxlength.requiredLength}}</strong>
+                    characters
+                </mat-error>
+                <mat-error *ngIf="formGroup.get('signupPassCtrl').errors &&
+                formGroup.get('signupPassCtrl').dirty && !formGroup.controls.signupPassCtrl.hasError('required')">
+                    Password is <strong>REQUIRED</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-card-actions>
+                <div fxLayout="row" fxLayoutAlign="space-around center">
+                    <button class="button-home" type="submit" (click)="signup()">Sign Up</button>
+                </div>
+            </mat-card-actions>
+        </form>
+
+    </mat-card>
+</section>

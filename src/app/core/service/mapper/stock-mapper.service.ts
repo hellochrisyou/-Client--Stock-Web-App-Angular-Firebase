@@ -8,7 +8,7 @@ export class StockMapperService {
 
   stockArr: Stock[];
   curStock: Stock = {
-    options: 'options'
+    options: ' '
   };
 
 
@@ -18,7 +18,7 @@ export class StockMapperService {
     this.stockArr = [];
     data.forEach(x => {
       this.curStock = {
-        options: 'options'
+        options: ' '
     };
       this.curStock.symbol = x.symbol;
       this.curStock.exchange = x.primaryExchange;

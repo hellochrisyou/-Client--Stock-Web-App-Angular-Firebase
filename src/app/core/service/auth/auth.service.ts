@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
-import { ConfirmComponent } from '@shared/dialog/confirm/confirm.component';
+import { ConfirmComponent } from '@shared/component/dialog/confirm/confirm.component';
 import { User } from '@shared/interface/models';
 import { auth } from 'firebase';
 import { Observable, of } from 'rxjs';

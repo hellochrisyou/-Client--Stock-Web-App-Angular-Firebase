@@ -1,17 +1,18 @@
 <div class="presentation">
-    <div class="social-container" fxLayout="row" fxLayoutAlign="center center">
-        <a (click)="loginGoogle()" class="social mat-elevation-z5">
-            <i class="fa fa-google"></i>
-        </a>
-    </div>
+
     <form [formGroup]="formGroup">
-        <h1 class="signinTitle">Sign In</h1>
+        <div class="social-container" fxLayout="row" fxLayoutAlign="center center">
+            <a (click)="loginGoogle()" class="social mat-elevation-z5">
+                <i class="fa fa-google"></i>
+            </a>
+        </div>
+        <h1 id="signinTitle">Sign In</h1>
         <div><span>with your <span class="gold">social media</span></span></div>
 
         <span>or use your <span class="gold">email</span></span>
         <mat-form-field>
             <mat-label>Email</mat-label>
-            <input class="mat-elevation-z5" matInput placeholder="Email" formControlName="loginEmailCtrl" required
+            <input class="mat-elevation-z5" matInput placeholder="Email" formControlName="loginEmailCtrl"
                 [errorStateMatcher]="matcher">
             <mat-error *ngIf="formGroup.controls.loginEmailCtrl.hasError('maxlength')">
                 Maximum of <strong>{{formGroup.controls.loginEmailCtrl.errors.maxlength.requiredLength}}</strong>
@@ -27,7 +28,7 @@
         </mat-form-field>
         <mat-form-field>
             <mat-label>Password</mat-label>
-            <input class="mat-elevation-z5" matInput placeholder="Password" formControlName="loginPassCtrl" required
+            <input class="mat-elevation-z5" matInput placeholder="Password" formControlName="loginPassCtrl"
                 [errorStateMatcher]="matcher">
             <mat-error *ngIf="formGroup.get('loginPassCtrl').errors &&
             formGroup.get('loginPassCtrl').dirty && formGroup.controls.loginPassCtrl.hasError('required')">

@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { CreateBaseForm } from '@shared/base/base-form';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { CreateBaseForm } from '@shared/base/base-form';
 import { EmitService } from 'app/core/service/emit/emit.service';
 import { AuthService } from 'app/core/service/auth/auth.service';
 import { CREATE_SIGNUP_FG } from '@home/home.config';

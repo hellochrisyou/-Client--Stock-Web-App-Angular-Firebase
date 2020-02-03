@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared/shared.module';
 
 import { HistoryRoutingModule } from './history-routing.module';
-import { HistoryLogicComponent } from './logic/history-logic/history-logic.component';
+import { HistoryLogicComponent } from './history-logic/history-logic.component';
 
 
 @NgModule({

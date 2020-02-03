@@ -1,23 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
 import { ChartsModule } from 'ng2-charts';
 
-import { TableComponent } from './component/table/table.component';
-import { ChartComponent } from './dialog/chart/chart.component';
-import { ConfirmComponent } from './dialog/confirm/confirm.component';
-import { ErrorComponent } from './dialog/error/error.component';
+import * as fromComponents from './component';
 import { MaterialModule } from './module/material.module';
-import { FooterComponent } from './component/footer/footer.component';
+import { ConfirmComponent, FooterComponent, TableComponent, ErrorDialogComponent, ChartComponent } from './component';
 
 @NgModule({
   declarations: [
-    TableComponent, 
-    ConfirmComponent, 
-    ChartComponent, 
-    ErrorComponent,
     FooterComponent,
+    TableComponent,
+    ConfirmComponent, ErrorDialogComponent, ChartComponent
   ],
   imports: [
     MaterialModule,
@@ -31,8 +26,10 @@ import { FooterComponent } from './component/footer/footer.component';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    ChartsModule,
+    FooterComponent,
     TableComponent,
-    FooterComponent
+    ConfirmComponent, ErrorDialogComponent, ChartComponent
   ],
   providers: [
     {
@@ -40,9 +37,7 @@ import { FooterComponent } from './component/footer/footer.component';
     }
   ],
   entryComponents: [
-    ConfirmComponent,
-    ChartComponent,
-    ErrorComponent,
+    ConfirmComponent, ErrorDialogComponent, ChartComponent
   ]
 })
 export class SharedModule { }

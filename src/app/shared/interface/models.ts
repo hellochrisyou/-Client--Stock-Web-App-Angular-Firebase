@@ -28,10 +28,6 @@ export interface SearchHistory {
   name?: string,
 }
 
-export interface HistoryList {
-  historyList: SearchHistory[]
-}
-
 export interface JsonString {
   jsonString: String;
 }

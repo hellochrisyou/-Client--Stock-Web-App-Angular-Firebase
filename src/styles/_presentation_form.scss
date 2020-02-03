@@ -1,7 +1,9 @@
+@import '_color';
+
 @mixin presentationForm() {
    .presentation {
 	form {		
-		background: linear-gradient(90deg, rgba(25,118,210,1) 0%, rgba(0,128,255,1) 210%) !important;
+		background: $blue-background;
 		display: flex;
 		flex-direction: column;
 		padding: 0 100px;
@@ -15,7 +17,7 @@
 		border: none;
 		padding: 10px 15px;.presentation {
 	form {
-		background: linear-gradient(90deg, rgba(25,118,210,1) 0%, rgba(0,128,255,1) 210%) !important;
+		background: $blue-background;
 		display: flex;
 		flex-direction: column;
 		padding: 0 100px;

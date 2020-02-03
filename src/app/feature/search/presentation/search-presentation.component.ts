@@ -13,14 +13,16 @@ import { CreateBaseForm } from '@shared/base/base-form';
 })
 export class SearchPresentationComponent extends CreateBaseForm implements OnInit {
 
+
   searchGroup: SearchGroup[] = SEARCHGROUP;
-  value: string;
+
   constructor(
     private fb: FormBuilder,
     protected changeDetectorRef: ChangeDetectorRef,
   ) {
     super(fb, changeDetectorRef);
   }
+
   searchOptCtrl = new FormControl('', [Validators.required]);
 
   @Output() emitValue = new EventEmitter();
@@ -36,15 +38,9 @@ export class SearchPresentationComponent extends CreateBaseForm implements OnIni
   }
 
   public submitForm(): void {
-    console.log('search formGroup:', this.formGroup)
-    if (this.formGroup.get('searchOptCtrl')) {
-      if (this.searchGroup[0].option.forEach(x => { x === this.searchOptCtrl.value }) !== null) {
-        this.value = this.searchOptCtrl.value
-      } else {
-        this.value = this.searchOptCtrl.value;
-      }
-      console.log('submitformvalue', this.value)
-      this.emitValue.emit(this.value);
+    console.log('search formGroup:', this.formGroup);
+    if (this.formGroup.get('searchOptCtrl').value) {
+      this.emitValue.emit(this.formGroup.get('searchOptCtrl').value);
     }
   }
   public ngOnDestroy(): void {
