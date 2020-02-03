@@ -60,7 +60,7 @@ export class EditProfileComponent extends CreateBaseForm {
     this.user.uid =  this.af.auth.currentUser.email;    
     this.changeDetectorRefs.detectChanges();
     this.auth.updateUserData(this.user);
-    this.snackBar.open('Sign Up', 'SUCCESS', {});
+    this.snackBar.open('Profile Update', 'SUCCESS', {});
     this.router.navigateByUrl('/home');
   }
 }

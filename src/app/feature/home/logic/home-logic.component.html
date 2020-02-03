@@ -1,7 +1,7 @@
-<main>
-    <div *ngIf="auth.isAuthenticated; then authenticated else guest">
+<main fxShow.xs="false" fxShow.sm="false" fxShow.md="false" fxShow.gt-lg="true" fxShow="true">
+    <div  *ngIf="auth.isAuthenticated; then authenticated else guest">
     </div>
-    <ng-template #guest>
+    <ng-template #guest >
         <div class="container" id="container" [ngClass]="condition?'right-panel-active':''">
             <div class="form-container sign-up-container">
                 <home-login></home-login>
@@ -27,9 +27,24 @@
         </div>
     </ng-template>
     <ng-template #authenticated>
-        <!-- Put in photo -->
         <div id="mobile-picture" fxLayout="column" fxLayoutAlign="center center">
         <h4>Available on Mobile</h4><br/>
+            <div>
+                <img class="margin-center mat-elevation-12" src="../../../../../assets/img/mobile-phone.png">
+            </div>            
+        </div>
+    </ng-template>
+</main>
+
+<main fxShow.xs="true" fxShow.sm="true" fxShow.md="true" fxShow.gt-lg="false" fxHide="true">
+    <div  *ngIf="auth.isAuthenticated; then authenticatedMobile else guestMobile">
+    </div>
+    <ng-template #guestMobile>
+        <home-mobile></home-mobile>
+    </ng-template>
+    <ng-template #authenticatedMobile>
+        <div id="mobile-picture" fxLayout="column" fxLayoutAlign="center center">
+        <h4>Available on Desktop</h4><br/>
             <div>
                 <img class="margin-center mat-elevation-12" src="../../../../../assets/img/mobile-phone.png">
             </div>            

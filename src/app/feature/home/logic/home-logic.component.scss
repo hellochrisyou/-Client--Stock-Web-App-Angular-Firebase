@@ -69,8 +69,9 @@ mat-toolbar.HomeComponent {
     width:100%;
 }
 
-#signinTitle {
+h1#mobile-signin-title {
     margin-top:-5vw;
+    text-align: center;
 }
 
 main {
@@ -85,30 +86,11 @@ p {
     text-align: justify;
 }
 
-// @media screen and (max-width: 600px) {
-//     #mobile-picture {
-//         margin-bottom: 10vh;
-//     }
-//     h1 {
-//         font-size: 1.5rem;
-//     }
-//     .container {
-//         top: 0;
-//     }
-//     .social-container {
-//         margin: 2rem 0 0 0rem;
-//     }
-//     .presentation {
-//         background: linear-gradient(90deg, #1976d2 0%, #0080ff 210%) 
-//     }
-//     .overlay, .presentation {
-//         max-width: 100%;
-//     }
-//     button {
-//         width: 50px;
-//         height: 20px;
-//         padding-right: 5rem;
-//         padding-bottom: 2rem;
-//     }
-// }
+home-mobile {
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+
 

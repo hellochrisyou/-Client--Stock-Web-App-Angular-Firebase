@@ -5,11 +5,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HistoryModule } from '@home/history/history.module';
-import { HomeModule } from '@home/home/home.module';
-import { MyListModule } from '@home/my-list/my-list.module';
-import { ProfileModule } from '@home/profile/profile.module';
-import { SearchModule } from '@home/search/search.module';
 
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +12,11 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { ErrorComponent } from './error/error.component';
 import { SharedModule } from './shared/shared.module';
+import { HomeModule } from '@home/home.module';
+import { ProfileModule } from './feature/profile/profile.module';
+import { HistoryModule } from './feature/history/history.module';
+import { SearchModule } from './feature/search/search.module';
+import { MyListModule } from './feature/my-list/my-list.module';
 
 @NgModule({
   declarations: [

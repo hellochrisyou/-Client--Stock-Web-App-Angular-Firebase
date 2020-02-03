@@ -1,0 +1,18 @@
+@import "_control";
+@import "_button";
+@import "_font";
+@import "_container";
+
+@include input();
+@include button();
+@include font();
+@include container();
+
+section {
+  min-width: 100vw;
+  min-height: 70vh;
+}
+
+mat-card {
+    max-width: 70vw;
+} 

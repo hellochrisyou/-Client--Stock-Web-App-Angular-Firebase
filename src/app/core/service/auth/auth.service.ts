@@ -70,7 +70,7 @@ export class AuthService {
       .then(res => {
         // this.userService.addUser(this.userData);
         console.log('Successfully signed up!', res);
-        this.snackBar.open('Sign Up', 'SUCCESS', {
+        this.snackBar.open('Registration', 'SUCCESS', {
         });
         this.router.navigateByUrl('search-stock');
       })

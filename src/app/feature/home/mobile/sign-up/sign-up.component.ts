@@ -1,16 +1,16 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { CREATE_SIGNUP_FG } from '@home/home/home.config';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { CreateBaseForm } from '@shared/base/base-form';
-import { AuthService } from 'app/core/service/auth/auth.service';
+import { FormBuilder } from '@angular/forms';
 import { EmitService } from 'app/core/service/emit/emit.service';
+import { AuthService } from 'app/core/service/auth/auth.service';
+import { CREATE_SIGNUP_FG } from '@home/home.config';
 
 @Component({
-  selector: 'home-signup',
-  templateUrl: './signup-presentation.component.html',
-  styleUrls: ['../../logic/home-logic.component.scss']
+  selector: 'mobile-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.scss']
 })
-export class SignupLogicComponent extends CreateBaseForm implements OnInit, OnDestroy {
+export class SignUpComponent extends CreateBaseForm implements OnInit, OnDestroy {
 
   constructor(
     protected fb: FormBuilder,
