@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('./feature/profile/profile.module').then(mod => mod.ProfileModule),
-   },
+  },
   {
     path: 'search-stock',
     loadChildren: () => import('./feature/search/search.module').then(mod => mod.SearchModule),
@@ -30,7 +30,7 @@ const routes: Routes = [
     redirectTo: '/home',
     pathMatch: 'full'
   },
-  { path: '**', component: ErrorComponent, data: {state: 'error' } }
+  { path: '**', component: ErrorComponent, data: { state: 'error' } }
 ];
 
 @NgModule({

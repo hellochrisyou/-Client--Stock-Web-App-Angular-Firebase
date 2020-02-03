@@ -21,9 +21,12 @@ section {
 a i {
     color: black;
 }
-
 mat-card {
   background: $blue-background
+}
+
+mat-form-field {
+  width: 70%;
 }
 
 .mat-form-field-underline {
