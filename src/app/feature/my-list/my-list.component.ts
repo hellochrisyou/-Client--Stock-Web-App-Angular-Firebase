@@ -16,7 +16,7 @@ import { EmitService } from 'app/core/service/emit/emit.service';
   styleUrls: ['./my-list.component.scss']
 })
 export class MyListComponent implements OnInit {
- 
+
   isSearch = 'false';
   stockArr: Stock[] = [];
   stockCol: ColumnObject[] = STOCK_COL_OBJ;
@@ -30,13 +30,10 @@ export class MyListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('this Stock arr', this.stockArr);
-    this.stockService.getStocks().valueChanges().pipe(map(data => data)).subscribe( value => {
-      console.log('observable stocks', value)
+    this.stockService.getStocks().valueChanges().pipe(map(data => data)).subscribe(value => {
       this.stockArr = value;
       this.changeDetectorRefs.detectChanges();
       this.emitService.refreshTable();
-      console.log('this Stock arr2', this.stockArr);
-    });  
+    });
   }
 }

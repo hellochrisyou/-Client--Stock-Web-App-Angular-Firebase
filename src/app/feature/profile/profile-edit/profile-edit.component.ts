@@ -55,15 +55,22 @@ export class ProfileEditComponent extends CreateBaseForm {
     super.ngOnDestroy();
   }
 
-  public submit(): void {
-    this.user.displayName = this.formGroup.get('displayNameCtrl').value;
-    this.user.country = this.formGroup.get('countryCtrl').value;
-    this.user.photoURL = this.formGroup.get('photoCtrl').value;
-    this.user.email = this.af.auth.currentUser.email;
-    this.user.uid = this.af.auth.currentUser.email;
-    this.changeDetectorRefs.detectChanges();
-    this.auth.updateUserData(this.user);
-    this.snackBar.open('Profile Update', 'SUCCESS', {});
-    this.router.navigateByUrl('/home');
+  public submit(value: any): boolean {
+    console.log('d', this.formGroup.valid);
+    if (!this.formGroup.valid) {
+      alert('Please correctly fill all the required fields!');
+      return false;
+    } else {
+      console.log(value);
+      this.user.displayName = this.formGroup.get('displayNameCtrl').value;
+      this.user.country = this.formGroup.get('countryCtrl').value;
+      this.user.photoURL = this.formGroup.get('photoCtrl').value;
+      this.user.email = this.af.auth.currentUser.email;
+      this.user.uid = this.af.auth.currentUser.email;
+      this.changeDetectorRefs.detectChanges();
+      this.auth.updateUserData(this.user);
+      this.snackBar.open('Profile Update', 'SUCCESS', {});
+      this.router.navigateByUrl('/home');
+    }
   }
 }

@@ -15,6 +15,7 @@ import { EmitService } from 'app/core/service/emit/emit.service';
 import { HistoryMapperService } from 'app/core/service/mapper/history-mapper.service';
 
 @Component({
+  // tslint:disable-next-line: component-selector
   selector: 'history-logic',
   templateUrl: './history-logic.component.html',
   styleUrls: ['./history-logic.component.scss']
@@ -22,9 +23,9 @@ import { HistoryMapperService } from 'app/core/service/mapper/history-mapper.ser
 export class HistoryLogicComponent implements OnInit {
   histories: SearchHistory[] = [];
 
-  isSearch: string = 'neither';
+  isSearch = 'neither';
   searchCol: ColumnObject[] = SEARCH_COL_OBJ;
-  
+
   constructor(
     private historyService: HistoryService,
     private router: Router,
@@ -34,9 +35,8 @@ export class HistoryLogicComponent implements OnInit {
     private historyMapperService: HistoryMapperService
   ) { }
 
-  ngOnInit() {    
-     this.historyService.getAllHistory().valueChanges().pipe(map(data => data)).subscribe( data => {
-      console.log('observable histories', data);
+  ngOnInit() {
+    this.historyService.getAllHistory().valueChanges().pipe(map(data => data)).subscribe(data => {
       this.histories = this.historyMapperService.mapHistoryArray(data);
       this.changeDetectorRefs.detectChanges();
       this.emitService.refreshTable();

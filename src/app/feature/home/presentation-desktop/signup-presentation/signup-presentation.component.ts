@@ -6,6 +6,7 @@ import { EmitService } from 'app/core/service/emit/emit.service';
 import { CREATE_SIGNUP_FG } from '@home/home.config';
 
 @Component({
+  // tslint:disable-next-line: component-selector
   selector: 'home-signup',
   templateUrl: './signup-presentation.component.html',
   styleUrls: ['../../logic/home-logic.component.scss']
@@ -23,10 +24,9 @@ export class SignupLogicComponent extends CreateBaseForm implements OnInit, OnDe
 
   public signup(): boolean {
     if (!this.formGroup.valid) {
-      alert('Please fill all the required fields')
+      alert('Please correctly fill all the required fields');
       return false;
     } else {
-      console.log(this.formGroup.value);
       this.auth.signupEmail(this.formGroup.get('signupEmailCtrl').value, this.formGroup.get('signupPassCtrl').value);
     }
 

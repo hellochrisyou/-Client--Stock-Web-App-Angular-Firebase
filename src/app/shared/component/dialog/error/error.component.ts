@@ -17,7 +17,6 @@ export class ErrorDialogComponent implements OnInit {
     this.title = data.title;
     this.subTitle = data.subTitle;
     this.text = data.text;
-    console.log('here here', data);
   }
   ngOnInit() {
   }

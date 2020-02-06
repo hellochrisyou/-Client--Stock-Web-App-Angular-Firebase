@@ -59,7 +59,7 @@ export class ChartComponent implements OnInit {
 
     this.httpService.getChart(this.data.keyword.symbol, this.data.increment).subscribe(data => {
       this.chartData = [];
-      switch(this.data.increment) {
+      switch (this.data.increment) {
         case '5d':
           this.chartService.mapChartArrayFiveDays(data, this.data.keyword.symbol);
           this.chartLabels = ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5'];
@@ -67,22 +67,23 @@ export class ChartComponent implements OnInit {
         case '1m':
           this.chartService.mapChartArrayOneMonth(data, this.data.keyword.symbol);
           this.chartLabels = ['Week 1', 'Week 2', 'Week 3', 'Week 4'];
-          break;          
+          break;
         case '1y':
           this.chartService.mapChartArrayOneYear(data, this.data.keyword.symbol);
-          this.chartLabels = ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6', 'Month 7', 'Month 8', 'Month 9', 'Month 10', 'Month 11', 'Month 12', ];
+          // tslint:disable-next-line: max-line-length
+          this.chartLabels = ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6', 'Month 7', 'Month 8', 'Month 9', 'Month 10', 'Month 11', 'Month 12'];
           break;
         case '5y':
           this.chartService.mapChartArrayFiveYears(data, this.data.keyword.symbol);
           this.chartLabels = ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'];
           break;
-      }   
+      }
       this.chartData.push(this.chartService.getLow());
       this.chartData.push(this.chartService.getHigh());
       this.chartData.push(this.chartService.getChange());
     },
-      err => console.log('HTTP Error', err),
-      () => console.log('HTTP request completed.')
+      // err => console.log('HTTP Error', err),
+      // () => console.log('HTTP request completed.')
     );
   }
 }

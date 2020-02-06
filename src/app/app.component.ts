@@ -13,18 +13,16 @@ declare var $: any;
 export class AppComponent implements OnInit {
   title = 'Stock-Web-App';
 
-  constructor(public auth: AuthService) { 
-    console.log('beginning user', this.auth.user);
-    console.log('beginning authenticateds', this.auth.isAuthenticated);
+  constructor(public auth: AuthService) {
   }
 
   getState(outlet) {
     return outlet.activatedRouteData.state;
   }
-  
+
   ngOnInit(): void {
-    $(".menu-collapsed").click(function() {
-      $(this).toggleClass("menu-expanded");
+    $('.menu-collapsed').click(function () {
+      $(this).toggleClass('menu-expanded');
     });
   }
 }

@@ -28,19 +28,19 @@ export class HistoryService {
     let thisValue;
     switch (value) {
       case 'mostactive': {
-        thisValue = 'Most Active'
+        thisValue = 'Most Active';
         break;
       }
       case 'gainers': {
-        thisValue = 'Gainers'
+        thisValue = 'Gainers';
         break;
       }
       case 'losers': {
-        thisValue = 'Losers'
+        thisValue = 'Losers';
         break;
       }
       case 'iexvolume': {
-        thisValue = 'Volume'
+        thisValue = 'Volume';
         break;
       }
       default: {
@@ -62,7 +62,6 @@ export class HistoryService {
             uId: res.id,
             name: thisValue
           });
-          console.log('Response from Added Collection: ', res);
         }, err => reject(err)
         );
     });
@@ -75,13 +74,11 @@ export class HistoryService {
 
   public clearHistory() {
     this.path = this.angularFireAuth.auth.currentUser.email + '-history';
-    console.log('path', this.path);
     this.getAllHistory().snapshotChanges().subscribe(value => {
-      console.log('value here', value);
       value.forEach(data => {
         this.afs.collection(this.path).doc(data.payload.doc.id).delete();
-      })
-    })
+      });
+    });
   }
 
   public openSnackBar(message: string, title: string): void {

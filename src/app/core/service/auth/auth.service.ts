@@ -14,7 +14,9 @@ import { switchMap } from 'rxjs/operators';
 })
 export class AuthService {
 
+  // tslint:disable-next-line: variable-name
   private _authState: any = null;
+  // tslint:disable-next-line: variable-name
   private _user: Observable<User>;
 
   public get user(): Observable<User> {
@@ -43,12 +45,12 @@ export class AuthService {
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
-          return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
+          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
-          return of(null)
+          return of(null);
         }
       })
-    )
+    );
     this.afAuth.authState.subscribe(authState => {
       this.authState = authState;
     });
@@ -68,33 +70,26 @@ export class AuthService {
       .auth
       .createUserWithEmailAndPassword(email, password)
       .then(res => {
-        // this.userService.addUser(this.userData);
-        console.log('Successfully signed up!', res);
         this.snackBar.open('Registration', 'SUCCESS', {
         });
         this.router.navigateByUrl('search-stock');
       })
       .catch(error => {
-        console.log(error);
         this.signupErrorPopup(error.message);
       });
   }
 
- private OAuthProvider(provider) {
+  private OAuthProvider(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
-        this.updateUserData(credential.user)
-      })
+        this.updateUserData(credential.user);
+      });
   }
 
   // Firebase Google Sign-in
   public signinGoogle() {
     return this.OAuthProvider(new auth.GoogleAuthProvider())
-      .then(res => {
-        console.log('Google Successfully logged in!', res);        
-        }).catch(error => {
-          console.log(error);
-        });
+      .then(res => { }).catch(error => { });
   }
 
   public signOut() {
@@ -109,19 +104,16 @@ export class AuthService {
       .auth
       .signInWithEmailAndPassword(email, password)
       .then(credential => {
-        console.log('Successfully signed in!', credential);
         this.router.navigateByUrl('search-stock');
       })
-      .catch(err => {
-        console.log('Something is wrong:', err.message);
-      });
+      .catch(err => { });
   }
 
   public signupErrorPopup(message: string): void {
     const dialogRef = this.dialog.open(ConfirmComponent, {
       width: '25vw',
       data: {
-        title: 'Error', 
+        title: 'Error',
         subTitle: 'Signup Failed',
         text: message
       }
@@ -140,15 +132,15 @@ export class AuthService {
       displayName: user.displayName,
       photoURL: user.photoURL,
       country: user.country
-    }
-    return userRef.set(data, { merge: true })
+    };
+    return userRef.set(data, { merge: true });
   }
 
   get userData(): any {
-    if ( ! this.isAuthenticated ) {
+    if (!this.isAuthenticated) {
       return [];
     }
-  
+
     return [
       {
         id: this.authState.uid,

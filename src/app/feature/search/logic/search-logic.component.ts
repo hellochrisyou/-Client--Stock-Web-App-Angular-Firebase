@@ -44,18 +44,15 @@ export class SearchLogicComponent implements OnInit {
     this.changeDetectorRefs.detectChanges();
   }
   public onSubmit(value: string): void {
-    console.log('value of submit', value);
     this.httpService.getIex(value).subscribe(data => {
       this.stockArr = this.stockMapperService.mapStockArray(data);
       this.stockArr = this.nanService.mapStockArray(this.stockArr);
-      console.log('Data retrieved from getIEX', this.stockArr);
       this.historyService.addHistory(value);
       this.changeDetectorRefs.detectChanges();
       this.emitService.refreshTable();
-      console.log('Done', this.stockArr);
     },
-      err => console.log('HTTP Error for getIEX: ', err),
-      () => console.log('HTTP getIEX complete.')
+      // err => console.log('HTTP Error for getIEX: ', err),
+      // () => console.log('HTTP getIEX complete.')
     );
   }
 

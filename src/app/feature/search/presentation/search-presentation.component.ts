@@ -7,6 +7,7 @@ import { CREATE_SEARCH_HEADER } from '../search.config';
 import { CreateBaseForm } from '@shared/base/base-form';
 
 @Component({
+  // tslint:disable-next-line: component-selector
   selector: 'search-bar',
   templateUrl: './search-presentation.component.html',
   styleUrls: ['./search-presentation.component.scss']
@@ -38,11 +39,11 @@ export class SearchPresentationComponent extends CreateBaseForm implements OnIni
   }
 
   public submitForm(): void {
-    console.log('search formGroup:', this.formGroup);
     if (this.formGroup.get('searchOptCtrl').value) {
       this.emitValue.emit(this.formGroup.get('searchOptCtrl').value);
     }
   }
+  // tslint:disable-next-line: use-lifecycle-interface
   public ngOnDestroy(): void {
     super.ngOnDestroy();
   }
