@@ -42,29 +42,27 @@ export class StockService {
       week52High: stock.week52High,
       ytdChange: stock.ytdChange
     };
-    console.log('addStock', this.stock);
     return new Promise<any>((resolve, reject) => {
       this.afs.collection(this.path)
         .add(this.stock)
         .then(res => {
           stock.uId = res.id;
-           this.afs.collection(this.path).doc(stock.uId).set({ 
-            uId: res.id, 
-            symbol: this.stock.symbol, 
+          this.afs.collection(this.path).doc(stock.uId).set({
+            uId: res.id,
+            symbol: this.stock.symbol,
             options: ' ',
-            name: this.stock.name,  
-            exchange: this.stock.name,  
-            open: this.stock.open,  
-            low: this.stock.low,  
-            high: this.stock.high,  
-            latestPrice: this.stock.latestPrice,  
-            change: this.stock.change,  
-            changePercent: this.stock.changePercent,  
-            week52Low: this.stock.week52Low,  
-            week52High: this.stock.week52High,  
-            ytdChange: this.stock.ytdChange,  
+            name: this.stock.name,
+            exchange: this.stock.name,
+            open: this.stock.open,
+            low: this.stock.low,
+            high: this.stock.high,
+            latestPrice: this.stock.latestPrice,
+            change: this.stock.change,
+            changePercent: this.stock.changePercent,
+            week52Low: this.stock.week52Low,
+            week52High: this.stock.week52High,
+            ytdChange: this.stock.ytdChange,
           });
-          console.log('Response from Added Collection: ', res);
           this.openSnackBar('Stock Added', 'Succesful');
         }, err => reject(err)
         );
@@ -79,16 +77,14 @@ export class StockService {
 
   public deleteStock(stock: Stock) {
     this.path = this.angularFireAuth.auth.currentUser.email + '-stock';
-    console.log('path', this.path);
     return new Promise<any>((resolve, reject) => {
       this.getStocks().snapshotChanges().subscribe(value => {
-        console.log('value here', value);
         value.forEach(data => {
           if (stock.uId === data.payload.doc.id) {
             this.afs.collection(this.path).doc(data.payload.doc.id).delete();
           }
           // this.openSnackBar('Stock Deleted', 'Succesful');
-        })
+        });
       });
     });
   }

@@ -1,11 +1,11 @@
 <section>
-    <form [formGroup]="formGroup">
+    <form [formGroup]="formGroup" (ngSubmit)="submit(formGroup.value)">
         <div fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="1.5vw">
             <mat-form-field>
                 <mat-label class="white-color">DisplayName</mat-label>
                 <br>
-                <input matInput placeholder="Name" color="white" formControlName="displayNameCtrl" placeholder="Name"
-                    [errorStateMatcher]="matcher">
+                <input matInput placeholder="Name" color="white" type="text" formControlName="displayNameCtrl"
+                    placeholder="Name" [errorStateMatcher]="matcher">
                 <mat-hint color="white">This will not change any 3rd-party provider name properties</mat-hint>
                 <mat-error *ngIf="formGroup.controls.displayNameCtrl.hasError('required')">
                     Display Name is <strong>Required</strong>
@@ -19,7 +19,7 @@
             <mat-form-field>
                 <mat-label class="white-color">Country</mat-label>
                 <br>
-                <input matInput placeholder="Country" formControlName="countryCtrl" required placeholder="Name"
+                <input matInput placeholder="Country" type="text" formControlName="countryCtrl" placeholder="Name"
                     [errorStateMatcher]="matcher">
                 <mat-hint color="white">Abbreviations accepted</mat-hint>
                 <mat-error *ngIf="formGroup.controls.countryCtrl.hasError('required')">
@@ -45,8 +45,7 @@
             </mat-form-field>
         </div>
         <div fxLayout="column" fxLayoutAlign="space-around center">
-            <button class="non-home-button mat-elevation-z7 margin-center" type="submit"
-                (click)="submit()">Submit</button>
+            <button class="non-home-button mat-elevation-z7 margin-center" type="submit">Submit</button>
         </div>
     </form>
 </section>

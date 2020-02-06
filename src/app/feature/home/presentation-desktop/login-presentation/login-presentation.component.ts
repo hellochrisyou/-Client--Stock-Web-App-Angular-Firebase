@@ -37,13 +37,11 @@ export class LoginLogicComponent extends CreateBaseForm implements OnInit, OnDes
 
   public login(): boolean {
     if (!this.formGroup.valid) {
-      alert('Please fill all the required fields!')
+      alert('Please correctly fill all the required fields!');
       return false;
     } else {
-      console.log(this.formGroup.value)
+      this.auth.signinEmail(this.formGroup.get('loginEmailCtrl').value, this.formGroup.get('loginPassCtrl').value);
     }
-    console.log('check 1', this.formGroup.get('loginEmailCtrl').value);
-    this.auth.signinEmail(this.formGroup.get('loginEmailCtrl').value, this.formGroup.get('loginPassCtrl').value);
   }
 
   public ngOnInit(): void {
@@ -56,12 +54,6 @@ export class LoginLogicComponent extends CreateBaseForm implements OnInit, OnDes
   }
 
   public loginGoogle(): void {
-    // if (!this.formGroup.valid) {
-    //   alert('Please fill all the required fields')
-    //   return false;
-    // } else {
-    //   console.log(this.formGroup.value)
-    // }
     this.auth.signinGoogle();
   }
 

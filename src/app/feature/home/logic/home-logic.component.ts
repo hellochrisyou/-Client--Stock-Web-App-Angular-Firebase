@@ -16,24 +16,12 @@ export class HomeComponent implements OnInit {
     private closeDialogService: CloseDialogService,
     public auth: AuthService
   ) {
-    console.log('console', this.auth.user);
   }
 
   ngOnInit() {
-    console.log('hello');
     const signUpButton = document.getElementById('signUp');
     const signInButton = document.getElementById('signIn');
     const container = document.getElementById('container');
-
-
-    // signUpButton.addEventListener('click', () => {
-    //   container.classList.add('right-panel-active');
-    // });
-
-
-    // signInButton.addEventListener('click', () => {
-    //   container.classList.remove('right-panel-active');
-    // });
 
     this.closeDialogService.emitSignupSuccess.subscribe(x => {
       this.btnClick();
@@ -42,18 +30,5 @@ export class HomeComponent implements OnInit {
 
   public btnClick(): void {
     this.condition = !this.condition;
-    console.log(this.condition);
   }
-
-  // public goToprofile(): void {
-  //   this.routerTag = 'profile';
-  // }
-
-  // public goTosearch(): void {
-  //   this.routerTag = 'search';
-  // }
-
-  // public goTolist(): void {
-  //   this.routerTag = 'list';
-  // }
 }

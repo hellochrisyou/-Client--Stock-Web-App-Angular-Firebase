@@ -26,11 +26,17 @@ export class TableComponent implements OnInit {
   dataSource: MatTableDataSource<Stock | SearchHistory>;
   index: number;
 
+  // tslint:disable-next-line: variable-name
   private _isStock: boolean;
+  // tslint:disable-next-line: variable-name
   private _isSearch: string;
+  // tslint:disable-next-line: variable-name
   private _columnIds: string[] = [];
+  // tslint:disable-next-line: variable-name
   private _columnObjects: any[];
+  // tslint:disable-next-line: variable-name
   private _type: string;
+  // tslint:disable-next-line: variable-name
   private _dataArray: any[];
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -103,13 +109,10 @@ export class TableComponent implements OnInit {
     this.dataSource = new MatTableDataSource<any>(this.dataArray);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    console.log('emitted', this.dataArray);
   }
 
   public select(value: number): void {
     if (this._isSearch === 'true') {
-      console.log('select value: ', value);
-      console.log('datararay number', this.dataArray[value]);
       this.stockService.addStock(this.dataArray[value]);
     } else {
       this.stockService.deleteStock(this.dataArray[value]);
@@ -135,7 +138,7 @@ export class TableComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      // console.log(`Dialog result: ${result}`);
     });
   }
 
@@ -150,7 +153,7 @@ export class TableComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      // console.log(`Dialog result: ${result}`);
     });
   }
 

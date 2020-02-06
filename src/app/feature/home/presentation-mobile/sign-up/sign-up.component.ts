@@ -6,6 +6,7 @@ import { AuthService } from 'app/core/service/auth/auth.service';
 import { CREATE_SIGNUP_FG } from '@home/home.config';
 
 @Component({
+  // tslint:disable-next-line: component-selector
   selector: 'mobile-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
@@ -23,10 +24,9 @@ export class SignUpComponent extends CreateBaseForm implements OnInit, OnDestroy
 
   public signup(): boolean {
     if (!this.formGroup.valid) {
-      alert('Please fill all the required fields')
+      alert('Please correctly fill all the required fields');
       return false;
     } else {
-      console.log(this.formGroup.value);
       this.auth.signupEmail(this.formGroup.get('signupEmailCtrl').value, this.formGroup.get('signupPassCtrl').value);
     }
 

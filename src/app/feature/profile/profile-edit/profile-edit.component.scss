@@ -12,3 +12,14 @@ div button {
     margin-top: 1.5vw;
 }
  
+.mat-form-field-outline, .mat-form-field-empty.mat-form-field-label, .mat-form-field-label, .mat-form-field-underline, .mat-input-element, ::placeholder {
+    color: white !important;
+}
+
+button {
+    margin-bottom: 1rem;
+}
+
+section {
+    overflow: hidden;
+}
