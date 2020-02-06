@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -18,7 +18,7 @@ import { StockService } from 'app/core/service/firebase/stock.service';
   styleUrls: ['./table.component.scss'],
   animations: [expandRowTransition]
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnDestroy {
 
   tmpSearchArr: SearchHistory[] = [];
   expandRow: Stock;
@@ -103,6 +103,10 @@ export class TableComponent implements OnInit {
     this.emitService.refreshOutput.subscribe(x => {
       this.refresh();
     });
+  }
+
+  public ngOnDestroy() {
+    this.emitService.refreshOutput.unsubscribe();
   }
 
   public refresh(): void {
