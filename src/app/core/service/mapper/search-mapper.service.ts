@@ -17,9 +17,9 @@ export class SearchMapperService {
   public mapSearchArray(data: any): SearchHistory[] {
     this.searchArr = [];
     data.forEach(x => {
-      this.current = {}
-        this.current.name = x.name,        
-      this.searchArr.push(this.current);
+      this.current = {};
+      this.current.name = x.name,
+        this.searchArr.push(this.current);
     });
     return this.searchArr;
   }

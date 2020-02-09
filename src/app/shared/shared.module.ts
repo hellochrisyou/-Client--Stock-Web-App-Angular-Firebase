@@ -6,13 +6,13 @@ import { ChartsModule } from 'ng2-charts';
 
 import * as fromComponents from './component';
 import { MaterialModule } from './module/material.module';
-import { ConfirmComponent, FooterComponent, TableComponent, ErrorDialogComponent, ChartComponent } from './component';
+import { ConfirmComponent, FooterComponent, TableComponent, ChartComponent } from './component';
 
 @NgModule({
   declarations: [
     FooterComponent,
     TableComponent,
-    ConfirmComponent, ErrorDialogComponent, ChartComponent
+    ConfirmComponent, ChartComponent
   ],
   imports: [
     MaterialModule,
@@ -29,7 +29,7 @@ import { ConfirmComponent, FooterComponent, TableComponent, ErrorDialogComponent
     ChartsModule,
     FooterComponent,
     TableComponent,
-    ConfirmComponent, ErrorDialogComponent, ChartComponent
+    ConfirmComponent, ChartComponent
   ],
   providers: [
     {
@@ -37,7 +37,6 @@ import { ConfirmComponent, FooterComponent, TableComponent, ErrorDialogComponent
     }
   ],
   entryComponents: [
-    ConfirmComponent, ErrorDialogComponent, ChartComponent
-  ]
+    ConfirmComponent, ChartComponent]
 })
 export class SharedModule { }

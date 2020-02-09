@@ -60,10 +60,6 @@ MIT
 @angular/fire
 MIT
 
-@angular/fire/auth
-
-@angular/fire/firestore
-
 @angular/flex-layout
 MIT
 The MIT License
@@ -496,8 +492,6 @@ Apache-2.0
 firebase/app
 
 firebase/auth
-
-firebase/firestore
 
 hammerjs
 MIT

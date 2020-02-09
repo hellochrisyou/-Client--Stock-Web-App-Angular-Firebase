@@ -18,16 +18,16 @@ export interface Stock {
 export interface User {
   uid?: string;
   displayName?: string;
-  email?: string;  
+  email?: string;
   photoURL?: string;
-  country?: string;  
+  country?: string;
 }
 
 export interface SearchHistory {
   uId?: string;
-  name?: string,
+  name?: string;
 }
 
 export interface JsonString {
-  jsonString: String;
+  jsonString: string;
 }

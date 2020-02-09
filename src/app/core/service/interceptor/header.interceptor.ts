@@ -12,7 +12,7 @@ export class HeaderInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         req = req.clone({
             setHeaders: {
-                "Content-Type": "application/json"
+                'Content-Type': 'application/json'
             }
         });
         return next.handle(req);

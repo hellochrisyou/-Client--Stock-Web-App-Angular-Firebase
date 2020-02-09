@@ -4,7 +4,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ChartComponent } from '@shared/component/dialog/chart/chart.component';
-import { ErrorDialogComponent } from '@shared/component/dialog/error/error.component';
 import { COLS_DISPLAY } from '@shared/const/column.const';
 import { SearchHistory, Stock } from '@shared/interface/models';
 import { expandRowTransition } from 'app/core/animation/animation';
@@ -138,21 +137,6 @@ export class TableComponent implements OnInit, OnDestroy {
       data: {
         keyword: this.dataArray[index],
         increment: incrementStr
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      // console.log(`Dialog result: ${result}`);
-    });
-  }
-
-
-  public openErrorDialog(errorMessage: string): void {
-    const dialogRef = this.dialog.open(ErrorDialogComponent, {
-      data: {
-        title: errorMessage,
-        subtitle: 'Saving stock',
-        text: 'You have already saved this stock'
       }
     });
 

@@ -20,7 +20,7 @@ export class HistoryService {
   path: string;
   constructor(
     private afs: AngularFirestore,
-    private angularFireAuth: AngularFireAuth,
+    private auth: AuthService,
     private snackBar: MatSnackBar,
   ) { }
 
@@ -47,7 +47,7 @@ export class HistoryService {
         break;
       }
     }
-    this.path = this.angularFireAuth.auth.currentUser.email + '-history';
+    this.path = this.auth.userData.email + '-history';
     this.history = {
       uId: '',
       name: thisValue
@@ -68,12 +68,12 @@ export class HistoryService {
   }
 
   public getAllHistory(): AngularFirestoreCollection<SearchHistory> {
-    this.path = this.angularFireAuth.auth.currentUser.email + '-history';
+    this.path = this.auth.userData.emaill + '-history';
     return this.afs.collection<SearchHistory>(this.path);
   }
 
   public clearHistory() {
-    this.path = this.angularFireAuth.auth.currentUser.email + '-history';
+    this.path = this.auth.userData.email + '-history';
     this.getAllHistory().snapshotChanges().subscribe(value => {
       value.forEach(data => {
         this.afs.collection(this.path).doc(data.payload.doc.id).delete();
