@@ -67,7 +67,6 @@ export class AuthService {
   /* Sign up */
   public signupEmail(email: string, password: string) {
     this.afAuth
-      .auth
       .createUserWithEmailAndPassword(email, password)
       .then(res => {
         this.snackBar.open('Registration', 'SUCCESS', {
@@ -80,7 +79,7 @@ export class AuthService {
   }
 
   private OAuthProvider(provider) {
-    return this.afAuth.auth.signInWithPopup(provider)
+    return this.afAuth.signInWithPopup(provider)
       .then((credential) => {
         this.updateUserData(credential.user);
       });
@@ -93,7 +92,7 @@ export class AuthService {
   }
 
   public signOut() {
-    this.afAuth.auth.signOut().then(() => {
+    this.afAuth.signOut().then(() => {
       this.router.navigate(['/home']);
     });
   }
@@ -101,7 +100,6 @@ export class AuthService {
   /* Sign in */
   public signinEmail(email: string, password: string) {
     this.afAuth
-      .auth
       .signInWithEmailAndPassword(email, password)
       .then(credential => {
         this.router.navigateByUrl('search-stock');
@@ -127,8 +125,8 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
 
     const data: User = {
-      uid: user.uid,
-      email: user.email,
+      uid: this.authState.uid,
+      email: this.authState.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
       country: user.country

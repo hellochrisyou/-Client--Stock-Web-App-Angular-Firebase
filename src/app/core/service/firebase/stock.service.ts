@@ -25,7 +25,7 @@ export class StockService {
   ) { }
 
   public addStock(stock: Stock) {
-    this.path = this.angularFireAuth.auth.currentUser.email + '-stock';
+    this.path = this.auth.userData.email + '-stock';
     this.stock = {
       options: ' ',
       uId: '',
@@ -71,12 +71,12 @@ export class StockService {
 
 
   public getStocks(): AngularFirestoreCollection<Stock> {
-    this.path = this.angularFireAuth.auth.currentUser.email + '-stock';
+    this.path = this.auth.userData.email + '-stock';
     return this.afs.collection<Stock>(this.path);
   }
 
   public deleteStock(stock: Stock) {
-    this.path = this.angularFireAuth.auth.currentUser.email + '-stock';
+    this.path = this.auth.userData.email + '-stock';
     return new Promise<any>((resolve, reject) => {
       this.getStocks().snapshotChanges().subscribe(value => {
         value.forEach(data => {
