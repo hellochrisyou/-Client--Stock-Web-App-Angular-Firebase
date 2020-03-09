@@ -4,8 +4,8 @@ import {
   HttpTestingController
 } from '@angular/common/http/testing';
 import { HttpErrorResponse } from '@angular/common/http';
-import { MatDialog } from '@angular/material';
 import { HttpService } from './http.service';
+import { MatDialog } from '@angular/material/dialog';
 describe('HttpService', () => {
   let service: HttpService;
   beforeEach(() => {

@@ -1,61 +1,65 @@
-@import '_font';
-@import '_color';
+@import "_font";
+@import "_color";
 @include font();
 
 .toolbar {
-padding:0 1vw 0 2vw;
-width: 100vw;
-height: 80px;   
-background: $blue-background;
-color: white;
-font-weight: 600;
-span {
-	font-size: 1.5rem;
+  padding: 0 1vw 0 2vw;
+  width: 100vw;
+  height: 80px;
+  background: $blue-background;
+  color: white;
+  font-weight: 600;
+  span {
+    font-size: 1.5rem;
+  }
+  img {
+    margin: 0;
+  }
+  // #twitter-logo {
+  // 	height: 40px;
+  // 	margin: 0 16px;
+  // 	&:hover {
+  // 		opacity: 0.8;
+  // 	}
+  // }
 }
-img {
-	margin: 0;
+h1 {
+  padding-top: 4vh;
 }
-// #twitter-logo {
-// 	height: 40px;
-// 	margin: 0 16px;
-// 	&:hover {
-// 		opacity: 0.8;
-// 	}
-// }
-}
-
 a {
-border: none;
+  border: none;
 }
 
 .spacer {
-flex: 1;
-text-align: right;	
+  flex: 1;
+  text-align: right;
 }
 #left-spacer {
-text-align: left;
-margin-left: 11vw; 
+  text-align: left;
+  margin-left: 11vw;
 }
 #right-spacer {
-	padding-right: 1vw;
+  padding-right: 1vw;
 }
 
 a i {
-	color: white;
-	margin: 0 2px 0;
-	background: transparent; 
+  color: white;
+  margin: 0 2px 0;
+  background: transparent;
 }
 
-a i:hover, mat-toolbar a, mat-icon:hover {
-transform: scale3d(1.2, 1.2, 1); 
--webkit-transform: scale3d(1.2, 1.2, 1); 
-transition: all 0.35s cubic-bezier(0.000, 1.270, 0.460, 1.650); 
--webkit-transition: all 0.35s cubic-bezier(0.000, 1.270, 0.460, 1.650); 
-color: black;
+a i:hover,
+mat-toolbar a,
+mat-icon:hover {
+  transform: scale3d(1.2, 1.2, 1);
+  -webkit-transform: scale3d(1.2, 1.2, 1);
+  transition: all 0.35s cubic-bezier(0, 1.27, 0.46, 1.65);
+  -webkit-transition: all 0.35s cubic-bezier(0, 1.27, 0.46, 1.65);
+  color: black;
 }
 
 mat-icon:hover {
-color: rgb(221,0,49);
+  color: rgb(221, 0, 49);
 }
 
 // i.fa.fa-twitter:hover {
@@ -79,34 +83,33 @@ color: rgb(221,0,49);
 // }
 
 a {
-margin: 0 10px 0;
+  margin: 0 10px 0;
 }
 mat-toolbar a svg#twitter-logo {
-	margin-left: 0;
+  margin-left: 0;
 }
 
 mat-icon {
-	cursor: pointer;
-	color: white;
+  cursor: pointer;
+  color: white;
 }
 
 h1.mat-typography {
-	color: white !important;
-	display:inline-block;
-	font-size:2rem;
-	
+  color: white !important;
+  display: inline-block;
+  font-size: 2rem;
 }
 
 i {
-font-size: 2rem;
+  font-size: 2rem;
 }
 
-@media screen and (max-width: 1366px) { 
-	#left-spacer {
-		margin-left: 20vw;	
-	}
-	#logout {
-		font-size: 1rem;
-		font-weight: 550;
-	}
+@media screen and (max-width: 1366px) {
+  #left-spacer {
+    margin-left: 20vw;
+  }
+  #logout {
+    font-size: 1rem;
+    font-weight: 550;
+  }
 }

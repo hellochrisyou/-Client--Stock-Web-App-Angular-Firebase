@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { User } from 'firebase';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'

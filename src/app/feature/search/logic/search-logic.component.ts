@@ -1,5 +1,4 @@
 import { ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { MatDialog } from '@angular/material';
 import { STOCK_COL_OBJ } from '@shared/const/column.const';
 import { ColumnObject } from '@shared/interface/interface';
 import { SearchHistory, Stock } from '@shared/interface/models';
@@ -8,6 +7,7 @@ import { HistoryService } from 'app/core/service/firebase/history.service';
 import { HttpService } from 'app/core/service/http/http.service';
 import { NanService } from 'app/core/service/mapper/nan.service';
 import { StockMapperService } from 'app/core/service/mapper/stock-mapper.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   // tslint:disable-next-line: component-selector

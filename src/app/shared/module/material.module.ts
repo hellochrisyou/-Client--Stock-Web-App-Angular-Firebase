@@ -1,8 +1,3 @@
-import { A11yModule } from '@angular/cdk/a11y';
-import { LayoutModule } from '@angular/cdk/layout';
-import { ScrollingModule } from '@angular/cdk/scrolling';
-import { CdkTableModule } from '@angular/cdk/table';
-import { CdkTreeModule } from '@angular/cdk/tree';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
@@ -39,15 +34,10 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { PortalModule } from '@angular/cdk/portal';
 
 @NgModule({
     exports: [
-        A11yModule,
         MatTreeModule,
-        PortalModule,
-        CdkTableModule,
-        CdkTreeModule,
         MatAutocompleteModule,
         MatBadgeModule,
         MatButtonModule,
@@ -79,10 +69,7 @@ import { PortalModule } from '@angular/cdk/portal';
         MatToolbarModule,
         MatSidenavModule,
         MatStepperModule,
-        A11yModule,
         MatOptionModule,
-        ScrollingModule,
-        LayoutModule,
         FlexLayoutModule,
     ]
 })

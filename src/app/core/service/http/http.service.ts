@@ -1,11 +1,11 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import * as GLOBAL from '@shared/const/url.const';
+import { KeyValuePair } from '@shared/interface/interface';
 import { JsonString } from '@shared/interface/models';
 import { throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { KeyValuePair } from '@shared/interface/interface';
 
 export const httpOptions = {
   headers: new HttpHeaders({

@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpService } from 'app/core/service/http/http.service';
 import * as GLOBAL from '@shared/const/url.const';
 import { SearchHistory } from '@shared/interface/models';
-import { MatTableDataSource, MatSnackBar } from '@angular/material';
+
 import { ColumnObject } from '@shared/interface/interface';
 import { SEARCH_COL_OBJ } from '@shared/const/column.const';
 import { SearchMapperService } from 'app/core/service/mapper/search-mapper.service';
@@ -13,6 +13,7 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { EmitService } from 'app/core/service/emit/emit.service';
 import { HistoryMapperService } from 'app/core/service/mapper/history-mapper.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   // tslint:disable-next-line: component-selector

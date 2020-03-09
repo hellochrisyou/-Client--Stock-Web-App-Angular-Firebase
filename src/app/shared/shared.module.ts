@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
 import { ChartsModule } from 'ng2-charts';
 
 import * as fromComponents from './component';
 import { MaterialModule } from './module/material.module';
 import { ConfirmComponent, FooterComponent, TableComponent, ChartComponent } from './component';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [

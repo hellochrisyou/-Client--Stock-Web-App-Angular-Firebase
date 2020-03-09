@@ -2,10 +2,10 @@ import { TestBed } from '@angular/core/testing';
 import { NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { MatDialog } from '@angular/material';
-import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 describe('AuthService', () => {
   let service: AuthService;
   beforeEach(() => {

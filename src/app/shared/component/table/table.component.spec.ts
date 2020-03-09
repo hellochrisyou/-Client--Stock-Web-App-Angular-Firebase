@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { MatDialog } from '@angular/material';
 import { EmitService } from 'app/core/service/emit/emit.service';
 import { StockService } from 'app/core/service/firebase/stock.service';
 import { COLS_DISPLAY } from '@shared/const/column.const';
 import { TableComponent } from './table.component';
+import { MatDialog } from '@angular/material/dialog';
 describe('TableComponent', () => {
   let component: TableComponent;
   let fixture: ComponentFixture<TableComponent>;

@@ -1,13 +1,14 @@
 import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { MatDialog, MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { ConfirmComponent } from '@shared/component/dialog/confirm/confirm.component';
 import { User } from '@shared/interface/models';
 import { auth } from 'firebase';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'
@@ -66,20 +67,19 @@ export class AuthService {
 
   /* Sign up */
   public signupEmail(email: string, password: string) {
-    this.afAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then(res => {
-        this.snackBar.open('Registration', 'SUCCESS', {
-        });
-        this.router.navigateByUrl('search-stock');
-      })
+    this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(res => {
+      this.snackBar.open('Registration', 'SUCCESS', {
+      });
+      this.router.navigateByUrl('search-stock');
+    })
       .catch(error => {
         this.signupErrorPopup(error.message);
       });
   }
 
   private OAuthProvider(provider) {
-    return this.afAuth.signInWithPopup(provider)
+    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
+
       .then((credential) => {
         this.updateUserData(credential.user);
       });
@@ -87,19 +87,19 @@ export class AuthService {
 
   // Firebase Google Sign-in
   public signinGoogle() {
-    return this.OAuthProvider(new auth.GoogleAuthProvider())
+    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
       .then(res => { }).catch(error => { });
   }
 
   public signOut() {
-    this.afAuth.signOut().then(() => {
+    this.afAuth.auth.signOut().then(() => {
       this.router.navigate(['/home']);
     });
   }
 
   /* Sign in */
   public signinEmail(email: string, password: string) {
-    this.afAuth
+    this.afAuth.auth
       .signInWithEmailAndPassword(email, password)
       .then(credential => {
         this.router.navigateByUrl('search-stock');

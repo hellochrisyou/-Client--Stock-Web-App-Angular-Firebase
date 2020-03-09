@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -92,9 +92,9 @@ export class TableComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    public dialog: MatDialog,
     private stockService: StockService,
     private emitService: EmitService,
+    private dialog: MatDialog
   ) {
   }
 
