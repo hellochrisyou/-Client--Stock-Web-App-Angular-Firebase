@@ -1,3 +1,4 @@
+<h1><b>Video Preview available at bottom of this page!!</b></h1>
 # Stock Web App - Angular/Firebase
 <img  src="https://storage.googleapis.com/static-images-703/stock-web-app.png"/>
 <hr>
